@@ -1,0 +1,768 @@
+
+
+div.sheet-wrapper{
+    display:block;
+    width:800px;
+    margin:0 auto;
+    padding:40px 0 0 0;
+    --background:#faf3d7;
+    --background-highlight:;
+    --section:#cfccb8;
+    --section-highlight:#a5a599;
+    --foreground:#cd583c;
+    --foreground-highlight:#ac4e34;
+    --border:#3a3326;
+    --blue:#26b7b4;
+    
+} 
+div.sheet-wrapper > div{
+    box-sizing:border-box; !important
+}
+.sheet-block{
+    display:block;
+}
+.sheet-inline-block{
+    display:inline-block;
+}
+div.sheet-section{
+    width:100%;
+    padding:10px;
+    border:3px solid var(--border);
+    border-radius:10px;
+    border-color:var(-border);
+    margin-bottom:10px;
+    background-color:var(--section);
+    box-sizing:border-box;
+}
+input[type="checkbox"]{
+    display:inline;
+}
+
+input[type="number"],select{
+    -webkit-appearance:textfield;
+    -moz-appearance:textfield;
+    appearance:textfield;
+    text-align:center;
+}
+textarea{
+    resize:vertical;
+    box-sizing:border-box;
+    
+}
+button[type=roll].sheet-blank-roll-button::before 
+{ 
+    content: ''; 
+    background:none;
+    border:none;
+}
+button[type="roll"]{
+    border-radius:15px;
+    width:18px;
+    border-color:var(--border);
+}
+label{
+    display:inline-block;
+    width:auto;
+    margin:0;
+    vertical-align: middle;
+}
+select{
+    vertical-align: middle;
+    margin: 0;
+}
+
+input, select, textarea{
+    background-color: var(--background);
+}
+
+/***************************
+    Trainer Character Info
+***************************/
+
+.sheet-creature-toggle[value="0"] ~ .sheet-toggle-a,
+.sheet-creature-toggle[value="1"] ~ .sheet-toggle-b{
+    display:none;
+}
+
+.sheet-creature-toggle[value="0"] ~ .sheet-toggle-tab-a,
+.sheet-creature-toggle[value="1"] ~ .sheet-toggle-tab-b{
+    display:none;
+}
+
+.sheet-party-pokeball{
+    position: relative;
+}
+.sheet-party-pokeball > input[type="radio"]{
+    position:absolute;
+    top:-5px;
+    left:0px;
+    width:30px !important;
+    height:30px  !important;
+    z-index:1;
+    opacity:0;
+}
+.sheet-party-pokeball > input[type="text"]{
+    border-radius: 20px;
+    padding-left: 30px;
+}
+
+.sheet-party-pokeball > img{
+    position:absolute;
+    top:-5px;
+    left:0px;
+    width:30px !important;
+    height:30px  !important;
+    margin:0;
+    
+}
+
+.sheet-pokeball-state[value="0"] ~ .sheet-pokeball-state-opened,
+.sheet-pokeball-state[value="0"] ~ .sheet-pokeball-state-locked,
+.sheet-pokeball-state[value="1"] ~ .sheet-pokeball-state-locked,
+.sheet-pokeball-state[value="1"] ~ .sheet-pokeball-state-closed,
+.sheet-pokeball-state[value="2"] ~ .sheet-pokeball-state-closed,
+.sheet-pokeball-state[value="2"] ~ .sheet-pokeball-state-opened{
+    display:none;
+}
+
+.sheet-pokeball-state[value="0"] ~ .sheet-pokeball-state-closed,
+.sheet-pokeball-state[value="1"] ~ .sheet-pokeball-state-opened,
+.sheet-pokeball-state[value="2"] ~ .sheet-pokeball-state-locked{
+    display:inline-block;
+}
+
+.sheet-trainer-party{
+    display:inline-block;
+    width:auto;
+    margin: 5px auto 0px;
+}
+
+
+/***************************
+    Pokemon Character Info
+***************************/
+.sheet-name-wrapper{
+    position:relative;
+    top:-25px;
+}
+.sheet-pokemon-character-wrapper{
+    
+}
+.sheet-pokemon-character-name{
+    width:300px;
+    margin-right:20px;
+}
+.sheet-pokemon-character-level{
+    width:70px;
+    margin-right:60px;
+}
+.sheet-pokemon-character-exp{
+    width:70px;
+    margin-right:2px;
+}
+
+.sheet-field-condensed{
+    position:relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.sheet-field-condensed > select{
+    display:inline-block;
+    text-align:center;
+    width:100% !important;
+    padding-top: 7px;
+    margin: 0;
+}
+.sheet-field-condensed > input{
+    border:1px solid;
+    border-radius:10px;
+    padding:10px 5px 0px 20px;
+    text-align:left;
+    width:100% !important;
+}
+.sheet-field-condensed > select + span::before,
+.sheet-field-condensed > input + span::before{
+    position:absolute;
+    top:0px;
+    left:10px;
+    font-size:x-small;
+    font-weight:bold;
+    content:attr(title);
+}
+
+.sheet-character-info-grid{
+    display:grid;
+    grid-template-columns: auto auto;
+}
+
+/***************************
+    Attribute 
+***************************/
+
+.sheet-attribute{
+    display:inline-block;
+    width:auto;
+    padding:5px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background-color:var(--blue);
+}
+
+.sheet-attribute  label{
+    display:inline-block;
+    width:70px;
+    margin:0px;
+}
+.sheet-attributes-left{
+    padding: 15px 5px;
+    background-color: var(--section-highlight);
+    border-radius: 10px;
+    margin: 0 5px 0 0;
+}
+.sheet-attribute > span.sheet-field-condensed{
+    width:60px;
+}
+.sheet-battle{
+    position:relative;
+}
+.sheet-battle label{
+    text-align: right;
+}
+.sheet-attribute + .sheet-contest > label{
+    display:inline-block;
+    width: 70px;
+    text-align:right;
+    margin:0px;
+}
+.sheet-attribute + .sheet-contest > input{
+    width:40px;
+    vertical-align: baseline;
+}
+.sheet-attribute + .sheet-contest{
+    display:inline-block;
+    position:relative;
+    width:150px;
+    padding:2px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    z-index:1;
+    
+}
+
+.sheet-attribute-toggle[value="0"] ~ .sheet-toggle-a,
+.sheet-attribute-toggle[value="1"] ~ .sheet-toggle-b{
+    display:none;
+}
+.sheet-attribute-toggle[value="1"] ~ .sheet-toggle-a,
+.sheet-attribute-toggle[value="0"] ~ .sheet-toggle-b{
+    display:inline-block;
+}
+.sheet-attribute-toggle[value="0"] ~ .sheet-pokemon-toggle{
+    display:none;
+}
+
+.sheet-attributes-grid{
+    display:grid;
+    grid-template-columns:60% auto;
+}
+
+.sheet-attribute-bonus{
+    
+}
+.sheet-attribute-bonus > div{
+    display:block;
+    margin:0 auto 2px;
+}
+
+
+/***************************
+    Condition
+***************************/
+
+.sheet-hp-wrapper{
+    border-radius: 10px;
+padding: 10px;
+background-color: var(--border);
+margin-bottom: 5px;
+}
+.sheet-will-wrapper{
+    border-radius: 10px;
+padding: 10px;
+background-color: var(--border);
+margin-bottom: 5px;
+}
+
+.sheet-condition-wrapper{
+    border-radius:10px;
+}
+.sheet-condition{
+    display:block;
+    width:auto;
+    padding: 2px 10px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background-color:var(--foreground-highlight);
+    margin-top:2px;
+}
+.sheet-condition > span > span{
+    border-left:1px solid grey;
+    padding-left:5px;
+}
+.sheet-condition > label{
+    width: 80px;
+}
+
+/***************************
+    Attitude
+***************************/
+
+.sheet-toggle-wrapper{
+    position:relative;
+}
+.sheet-toggle-a,
+.sheet-toggle-b{
+    display:inline-block;
+    position:absolute;
+    top:-20px;
+    right:-20px;
+    width:30px;
+    height:30px;
+}
+.sheet-toggle-a > input[type="radio"],
+.sheet-toggle-a > img,
+.sheet-toggle-b > input[type="radio"],
+.sheet-toggle-b > img{
+    width:30px !important;
+    height:30px !important;
+}
+
+.sheet-toggle-a > input[type="radio"],
+.sheet-toggle-b > input[type="radio"]{
+    position: relative;
+    top: 0;
+    left: 0;
+    opacity:0;
+    z-index:1;
+}
+
+.sheet-toggle-a > img,
+.sheet-toggle-b > img{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.sheet-attitude{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    
+    background-color:var(--blue);
+    border-radius:10px;
+
+}
+.sheet-attitude > div{
+    display:block;
+    
+}
+.sheet-attitude > div > label{}
+.sheet-attitude > div > input{}
+
+.sheet-attitude-wrapper{
+    position:relative;
+    top:0px;
+    left:0px;
+    padding:10px;
+    border:1px solid var(--border);
+    border-radius:10px;
+}
+.sheet-attitude-toggle[value="0"] ~ .sheet-toggle-a,
+.sheet-attitude-toggle[value="1"] ~ .sheet-toggle-b{
+    display:none;
+}
+.sheet-attitude-toggle[value="1"] ~ .sheet-toggle-a,
+.sheet-attitude-toggle[value="0"] ~ .sheet-toggle-b{
+    display:block;
+}
+
+.sheet-attitude-toggle[value="0"] ~ .sheet-toggle-tab-a,
+.sheet-attitude-toggle[value="1"] ~ .sheet-toggle-tab-b{
+    display:grid;
+}
+.sheet-attitude-toggle[value="1"] ~ .sheet-toggle-tab-a,
+.sheet-attitude-toggle[value="0"] ~ .sheet-toggle-tab-b{
+    display:none;
+}
+
+/***************************
+    Skills
+***************************/
+
+.sheet-skills{
+    display:grid;
+    border:1px solid var(--border);
+    border-radius:10px;
+    padding:10px;
+    position:relative;
+}
+.sheet-skills-main{
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+    border-radius:10px;
+    padding:3px;
+    background-color:var(--blue);
+    margin-bottom:5px;
+    
+}
+.sheet-skills-main-PMD{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    border-radius:10px;
+    padding:3px;
+    background-color:var(--blue);
+    margin-bottom:5px;
+}
+.sheet-large-skill label{
+    width: 100%;
+    text-align:center;
+}
+.sheet-large-skill input{
+    display: block;
+    margin: 5px auto;
+    width: 100px !important;
+}
+.sheet-skills-sub{
+    display:grid;
+    grid-template-columns: auto auto auto auto;
+    background-color:var(--foreground-highlight);
+    border-radius:10px;
+    padding:10px;
+    justify-content: space-around;
+}
+
+.sheet-skills-sub-PMD{
+    display:grid;
+    grid-template-columns: auto auto auto;
+    background-color:var(--foreground-highlight);
+    border-radius:10px;
+    padding:10px;
+    justify-content: space-around;
+}
+
+.sheet-skills-sub-PMD label,
+.sheet-skills-sub label{
+    width:75px;
+}
+
+
+.sheet-skills-col{
+
+    border-radius:10px;
+    padding:10px;
+}
+
+.sheet-skills-toggle-wrapper{}
+
+
+
+.sheet-skills-toggle[value="0"] ~ .sheet-toggle-a,
+.sheet-skills-toggle[value="0"] ~ .sheet-toggle-tab-a,
+.sheet-skills-toggle[value="1"] ~ .sheet-toggle-b,
+.sheet-skills-toggle[value="1"] ~ .sheet-toggle-tab-b{
+    display:none;
+}
+
+.sheet-skills-toggle[value="1"] ~ .sheet-toggle-a,
+.sheet-skills-toggle[value="0"] ~ .sheet-toggle-b{
+    display:block;
+}
+
+/***************************
+    Trainer Bag
+***************************/
+
+.sheet-trainer-bag{
+    display:grid;
+    grid-template-areas:
+    'potions large large' 
+    'small   large large'
+    'badge   badge badge';
+    padding:10px;
+    column-gap:10px;
+    row-gap:10px;
+}
+.sheet-trainer-bag > .sheet-potions-pocket,
+.sheet-trainer-bag > .sheet-small-pocket,
+.sheet-large-pocket,
+.sheet-trainer-bag > .sheet-badge-pocket{
+    background-color:var(--border);
+    border-radius:10px;
+    padding:10px;
+    color:white;
+}
+.sheet-trainer-bag label{
+    color:inherit;
+}
+.sheet-trainer-bag > .sheet-potions-pocket{
+    display:inline-block;
+    width:auto;
+    grid-area:potions;
+    background-color:var(--border);
+    color:white;
+}
+.sheet-trainer-bag > .sheet-potions-pocket label{
+    display: inline-block;
+    width: 40px;
+    height: auto;
+    text-align: center;
+    vertical-align: middle;
+}
+.sheet-trainer-bag > .sheet-potions-pocket strong{
+    text-align: center;
+    vertical-align: middle;
+}
+.sheet-trainer-bag > .sheet-potions-pocket .sheet-field-condensed span{
+    color:black;
+}
+
+.sheet-trainer-bag > .sheet-potions-pocket .sheet-field-condensed{
+    width:70px;
+}
+
+.sheet-trainer-bag > .sheet-small-pocket{
+    grid-area:small;
+    min-height: 50px;
+}
+
+.sheet-small-pocket-item{
+    display:block;
+    width:350px;
+    margin:3px auto 0;
+}
+.sheet-small-pocket-item > input{
+    width:100%;
+}
+.sheet-trainer-bag > .sheet-large-pocket{
+    grid-area:large;
+}
+.sheet-large-pocket-item{
+    display:block;
+    width:350px;
+    margin:3px auto 0;
+}
+.sheet-large-pocket-item > input{
+    display:block;
+    width:90%;
+    margin:2px auto 0;
+    border-bottom:1px solid var(--border);
+}
+
+.sheet-trainer-bag > .sheet-badge-pocket{
+    grid-area:badge;
+}
+.sheet-small-pocket > label,
+.sheet-large-pocket > label{
+    display:block;
+    text-align:center;
+    border-bottom:3px solid var(--border);
+    border-radius:10px;
+}
+
+.sheet-garment{
+    width:100%;
+}
+.sheet-PMD-item > *{
+    display:block;
+    width:70%;
+    margin:2px auto 0;
+    border-bottom:1px solid var(--border);
+}
+.sheet-pokemon-bag > *{
+    margin-top:5px;
+}
+
+
+/***************************
+    Move
+***************************/
+
+.repeating_moves{}
+.sheet-move-wrapper{
+    display:block;
+    margin:0 auto;
+    width:625px;
+    min-height:;
+    position:relative;
+    padding: 0 0 0 15px;
+    
+}
+.sheet-move-list >label{
+    display:block;
+    width:85%;
+    margin:10px auto;
+    border-width: 0 0 2px 0;
+    border-bottom: solid var(--border);
+    border-radius:10px;
+    text-align:center;
+}
+
+input.sheet-move-swap{
+    position:absolute;
+    top:7px;
+    left:0px;
+}
+
+.sheet-move{
+    border-radius: 10px;
+    background-color: var(--foreground-highlight);
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.sheet-move-wrapper input{
+    
+    border-width:0 0 1px 0;
+    border-bottom:1px solid var(--border);
+}
+.sheet-move-wrapper select{
+    
+    border:1px solid var(--border);
+    width:auto;
+}
+.sheet-move-wrapper textarea{
+    height: 100px;
+}
+.sheet-move-wrapper .sheet-move-name{
+    width: 250px;
+}
+.sheet-move .sheet-move-name{
+    padding: 4px 10px;
+}
+
+.sheet-move-display .sheet-move-name{
+    width:auto;
+}
+.sheet-move-display span.sheet-field{
+    display: inline-block;
+    min-height: 20px;
+    min-width: 50px;
+    background: var(--section);
+    padding: 4px 10px;
+    font-weight: bold;
+    vertical-align: bottom;
+}
+.sheet-move-display button[type="roll"]{
+    width: 25px !important;
+    height 25px !important;
+}
+
+.sheet-move-swap[value="0"] ~ .sheet-move-display,
+.sheet-move-swap[value="1"] ~ .sheet-move-edit{
+    display:none;
+}
+.sheet-move-swap[value="1"] ~ .sheet-move-display,
+.sheet-move-swap[value="0"] ~ .sheet-move-edit{
+    display:block;
+}
+
+
+
+.sheet-minimize_box[value="0"] ~ .sheet-collapsable{
+    display:block;
+}
+.sheet-minimize_box[value="1"] ~ .sheet-collapsable{
+    display:none;
+}
+/***************************
+    Sheet Select
+***************************/
+
+.sheet-creature_toggle[value="1"] ~ .sheet-human,
+.sheet-creature_toggle[value="0"] ~ .sheet-pokemon{
+   /* display:none; */
+}
+
+.sheet-creature_toggle[value="0"] ~ .sheet-human,
+.sheet-creature_toggle[value="1"] ~ .sheet-pokemon{
+    display:block;
+}
+
+
+/***************************
+    Hide Swap
+***************************/
+.sheet-hide-swap{
+    
+}
+.sheet-hide-swap ~ .sheet-hide-a,
+.sheet-hide-swap:checked ~ .sheet-hide-b{
+    display:inline-block;
+}
+.sheet-hide-swap:checked ~ .sheet-hide-a,
+.sheet-hide-swap ~ .sheet-hide-b{
+    display:none;
+}   
+
+/***************************
+    Rolltemplate
+***************************/
+
+
+rolltemplate{
+    width: 300px;
+    display: inline-block;
+}
+.sheet-template-container{
+    width:90%;
+    background-color:var(--foreground-highlight);
+    padding:0 0 5px;
+}
+.sheet-template-row{
+    background-color:var(--section-highlight);
+    padding:2px 10px;
+}
+
+.sheet-template-row label{
+    display:inline-block;
+    font-size:medium;
+    font-weight:bold;
+    text-align:right;
+    width:100px;
+    margin-right:10px;
+}
+
+.sheet-template-header{
+    background-color:var(--section);
+    padding:3px 10px;
+    border-bottom:3px solid var(--border);
+    
+}
+.sheet-template-container > div{
+    margin-bottom:5px;
+    
+}
+
+.sheet-template-effect{
+    
+    border-radius:5px;
+    border: 1px solid var(--border);
+    width:max-content;
+    padding:5px 5px 3px;
+    background-color:var(--section);
+    font-weight:bolder;
+    text-align:center;
+    margin:10px auto;
+    
+}
+.sheet-template-effect > div{
+    border-radius:5px;
+    background-color:var(--background);
+    text-align:center;
+    padding:5px;
+    font-size:16px;
+    font-weight:bolder;
+}
+.sheet-template-description{
+    padding: 3px 5px;
+    background:#ffffff77;
+}
