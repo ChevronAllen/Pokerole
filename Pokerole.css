@@ -1,10 +1,5 @@
 
-
-div.sheet-wrapper{
-    display:block;
-    width:800px;
-    margin:0 auto;
-    padding:40px 0 0 0;
+.charsheet{
     --background:#faf3d7;
     --background-highlight:;
     --section:#cfccb8;
@@ -14,17 +9,18 @@ div.sheet-wrapper{
     --border:#3a3326;
     --blue:#26b7b4;
     
-} 
-div.sheet-wrapper > div{
-    box-sizing:border-box; !important
+    --tough:#f6e584;
+    --cool:#f4a678;
+    --beauty:#abb4ad;
+    --cute:#e6aba0;
+    --smart:#b0c37c;
+    
 }
-.sheet-block{
-    display:block;
-}
-.sheet-inline-block{
-    display:inline-block;
-}
+
+
+
 div.sheet-section{
+    position:relative;
     width:100%;
     padding:10px;
     border:3px solid var(--border);
@@ -34,6 +30,7 @@ div.sheet-section{
     background-color:var(--section);
     box-sizing:border-box;
 }
+
 input[type="checkbox"]{
     display:inline;
 }
@@ -57,8 +54,9 @@ button[type=roll].sheet-blank-roll-button::before
 }
 button[type="roll"]{
     border-radius:15px;
-    width:18px;
+    min-width:18px;
     border-color:var(--border);
+    vertical-align: middle;
 }
 label{
     display:inline-block;
@@ -69,25 +67,141 @@ label{
 select{
     vertical-align: middle;
     margin: 0;
+    
 }
 
 input, select, textarea{
     background-color: var(--background);
+    border-color:#3a3326;
 }
 
+.sheet-wrapper{
+    display:block;
+    width:800px;
+    margin:50px auto 0;
+}
+.sheet-section{
+    
+}
+.sheet-creature-toggle-wrapper{
+    position:absolute;
+    top: -20px;
+    right: -70px;
+}
+.sheet-creature-toggle-wrapper input[type="checkbox"]{
+    position:relative;
+    display:inline-block;
+    width:50px;
+    height:50px;
+    opacity:0;
+    z-index:1;
+}
+.sheet-creature-toggle-wrapper img{
+    position:relative;
+    left:-50px;
+    width:50px;
+    height:50px;
+}
+
+.sheet-creature-toggle[value="0"] ~ .sheet-pokemon-only,
+.sheet-creature-toggle[value="1"] ~ .sheet-trainer-only{
+    display:none;
+}
+
+.sheet-PMD-toggle[value="0"] ~ .sheet-Core-only,
+.sheet-PMD-toggle[value="1"] ~ .sheet-PMD-only{
+    display:none;
+}
+
+/***************************
+    Fields
+***************************/
+
+.sheet-field-labeled{
+    position:relative;
+    display: inline-block;
+    vertical-align: middle;
+}
+.sheet-field-labeled > span:first-child{
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 10px 15px 2px 15px;
+    text-align: inherit;
+    width: 100% !important;
+    color: black;
+    background-color: var(--background);
+    display: inline-block;
+    box-sizing: border-box;
+
+}
+
+.sheet-field-labeled > select{
+    display:inline-block;
+    text-align:center;
+    width:100% ;
+    padding-top: 7px;
+    margin: 0;
+    padding-bottom: 2px;
+    padding-top: 8px;
+}
+.sheet-field-labeled > input{
+    border:1px solid;
+    border-radius:10px;
+    padding:10px 15px 2px 15px;
+    text-align:inherit;
+    width:100% !important;
+    color:black;
+}
+.sheet-field-labeled > textarea{
+    border:1px solid;
+    border-radius:10px;
+    padding:10px 15px 2px 15px;
+    text-align:inherit;
+    width:100% !important;
+    color:black;
+}
+.sheet-field-labeled > select + span,
+.sheet-field-labeled > input + span,
+.sheet-field-labeled > span:first-child + span{
+    position:absolute;
+    top:0px;
+    left:10px;
+    font-size:x-small;
+    font-weight:bold;
+    color:grey;
+}
+
+/***************************
+    Character Info
+***************************/
+
+.sheet-character-info .sheet-header{
+    position:relative;
+    top:-30px;
+    left:0px;
+}
+.sheet-character-info .sheet-header input{
+    border:2px solid #3a3326;
+}
+.sheet-character-info .sheet-left-col,
+.sheet-character-info .sheet-right-col{
+    display:block;
+}
+.sheet-character-info .sheet-right-col{
+    background-color:var(--border);
+    border-radius:10px;
+    padding:15px 10px;
+}
+
+.sheet-character-info .sheet-grid{
+    display:grid;
+    grid-template-columns: 400px auto;
+    column-gap: 10px;
+}
 /***************************
     Trainer Character Info
 ***************************/
 
-.sheet-creature-toggle[value="0"] ~ .sheet-toggle-a,
-.sheet-creature-toggle[value="1"] ~ .sheet-toggle-b{
-    display:none;
-}
-
-.sheet-creature-toggle[value="0"] ~ .sheet-toggle-tab-a,
-.sheet-creature-toggle[value="1"] ~ .sheet-toggle-tab-b{
-    display:none;
-}
 
 .sheet-party-pokeball{
     position: relative;
@@ -104,6 +218,7 @@ input, select, textarea{
 .sheet-party-pokeball > input[type="text"]{
     border-radius: 20px;
     padding-left: 30px;
+    width: 170px;
 }
 
 .sheet-party-pokeball > img{
@@ -145,638 +260,332 @@ input, select, textarea{
     position:relative;
     top:-25px;
 }
-.sheet-pokemon-character-wrapper{
-    
-}
-.sheet-pokemon-character-name{
-    width:300px;
-    margin-right:20px;
-}
-.sheet-pokemon-character-level{
-    width:70px;
-    margin-right:60px;
-}
-.sheet-pokemon-character-exp{
-    width:70px;
-    margin-right:2px;
-}
 
-.sheet-field-condensed{
-    position:relative;
-    display: inline-block;
-    vertical-align: middle;
-}
-.sheet-field-condensed > select{
-    display:inline-block;
-    text-align:center;
-    width:100% !important;
-    padding-top: 7px;
-    margin: 0;
-}
-.sheet-field-condensed > input{
-    border:1px solid;
-    border-radius:10px;
-    padding:10px 5px 0px 20px;
-    text-align:left;
-    width:100% !important;
-}
-.sheet-field-condensed > select + span::before,
-.sheet-field-condensed > input + span::before{
-    position:absolute;
-    top:0px;
-    left:10px;
-    font-size:x-small;
-    font-weight:bold;
-    content:attr(title);
-}
 
-.sheet-character-info-grid{
-    display:grid;
-    grid-template-columns: auto auto;
-}
 
 /***************************
-    Attribute 
+    Attributes
 ***************************/
 
-.sheet-attribute{
+.sheet-attributes .sheet-grid{
+    display:grid;
+    grid-template-columns:auto 300px;
+    column-gap:5px;
+}
+
+.sheet-attributes .sheet-attribute-row{
+    display:block;
+    margin-bottom:10px;
+}
+.sheet-attributes .sheet-battle,
+.sheet-attributes .sheet-contest{
     display:inline-block;
-    width:auto;
     padding:5px;
-    border:1px solid var(--border);
+    border:2px solid;
     border-radius:10px;
+}
+.sheet-attributes .sheet-battle > label  {
+    width: 70px;
+    text-align: right;
+}
+.sheet-attributes .sheet-contest > label {
+    width: 70px;
+    text-align: right;
+}
+
+.sheet-attributes .sheet-battle .sheet-field-labeled{
+    width:70px;
+    text-align:center;
+}
+.sheet-attributes .sheet-battle{
     background-color:var(--blue);
 }
 
-.sheet-attribute  label{
-    display:inline-block;
-    width:70px;
-    margin:0px;
-}
-.sheet-attributes-left{
-    padding: 15px 5px;
-    background-color: var(--section-highlight);
-    border-radius: 10px;
-    margin: 0 5px 0 0;
-}
-.sheet-attribute > span.sheet-field-condensed{
-    width:60px;
-}
-.sheet-battle{
-    position:relative;
-}
-.sheet-battle label{
-    text-align: right;
-}
-.sheet-attribute + .sheet-contest > label{
-    display:inline-block;
-    width: 70px;
-    text-align:right;
-    margin:0px;
-}
-.sheet-attribute + .sheet-contest > input{
-    width:40px;
-    vertical-align: baseline;
-}
-.sheet-attribute + .sheet-contest{
-    display:inline-block;
-    position:relative;
-    width:150px;
-    padding:2px;
-    border:1px solid var(--border);
+.sheet-attributes .sheet-bonuses,
+.sheet-attributes .sheet-right{
     border-radius:10px;
-    z-index:1;
-    
+    background-color:var(--border);
+    padding:5px;
+}
+.sheet-attributes .sheet-bonuses strong{
+    color:var(--section);
 }
 
-.sheet-attribute-toggle[value="0"] ~ .sheet-toggle-a,
-.sheet-attribute-toggle[value="1"] ~ .sheet-toggle-b{
-    display:none;
+.sheet-attributes .sheet-bonuses button{
+    padding:2px 5px;
+    width:90px;
 }
-.sheet-attribute-toggle[value="1"] ~ .sheet-toggle-a,
-.sheet-attribute-toggle[value="0"] ~ .sheet-toggle-b{
-    display:inline-block;
+.sheet-attributes .sheet-hp-will{
+    color:var(--section);
 }
-.sheet-attribute-toggle[value="0"] ~ .sheet-pokemon-toggle{
-    display:none;
-}
-
-.sheet-attributes-grid{
-    display:grid;
-    grid-template-columns:60% auto;
+.sheet-attributes .sheet-hp-will .sheet-field-labeled{
+    width:70px;
 }
 
-.sheet-attribute-bonus{
-    
+.sheet-attributes .sheet-hp-will strong{
+    font-size: 15pt;
+    vertical-align: middle;
 }
-.sheet-attribute-bonus > div{
-    display:block;
-    margin:0 auto 2px;
-}
-
 
 /***************************
-    Condition
+    Conditions
 ***************************/
-
-.sheet-hp-wrapper{
-    border-radius: 10px;
-padding: 10px;
-background-color: var(--border);
-margin-bottom: 5px;
+.sheet-conditions{
+    margin-top:10px;
 }
-.sheet-will-wrapper{
-    border-radius: 10px;
-padding: 10px;
-background-color: var(--border);
-margin-bottom: 5px;
-}
-
-.sheet-condition-wrapper{
+.sheet-conditions .sheet-conditions-row{
+    background-color:var(--section);
+    padding:2px 10px;
+    margin-bottom:2px;
     border-radius:10px;
 }
-.sheet-condition{
-    display:block;
-    width:auto;
-    padding: 2px 10px;
-    border:1px solid var(--border);
-    border-radius:10px;
-    background-color:var(--foreground-highlight);
-    margin-top:2px;
+.sheet-conditions .sheet-conditions-row label{
+    
 }
-.sheet-condition > span > span{
-    border-left:1px solid grey;
-    padding-left:5px;
+.sheet-conditions .sheet-condition-collapse{padding-left:5px;}
+.sheet-conditions .sheet-condition-collapse label{
+    font-size: 9pt;
 }
-.sheet-condition > label{
-    width: 80px;
+.sheet-conditions .sheet-collapse-input[value="1"] ~ .sheet-condition-collapse{
+    display:inline-block;
+    
+}
+.sheet-conditions .sheet-collapse-input[value="0"] ~ .sheet-condition-collapse{
+    display:none;
 }
 
 /***************************
     Attitude
 ***************************/
-
-.sheet-toggle-wrapper{
+.sheet-attitudes{
     position:relative;
+    margin-top:20px;
 }
-.sheet-toggle-a,
-.sheet-toggle-b{
-    display:inline-block;
+.sheet-attitude-grid{
+    display:grid;
+    grid-template-columns:auto auto auto;
+    justify-content:space-between;
+    column-gap:10px;
+    
+}
+.sheet-PMD-swap-wrapper{
     position:absolute;
-    top:-20px;
-    right:-20px;
-    width:30px;
-    height:30px;
+    top:-30px;
+    left: calc(50% - 25px);
 }
-.sheet-toggle-a > input[type="radio"],
-.sheet-toggle-a > img,
-.sheet-toggle-b > input[type="radio"],
-.sheet-toggle-b > img{
-    width:30px !important;
-    height:30px !important;
-}
-
-.sheet-toggle-a > input[type="radio"],
-.sheet-toggle-b > input[type="radio"]{
-    position: relative;
-    top: 0;
-    left: 0;
-    opacity:0;
-    z-index:1;
-}
-
-.sheet-toggle-a > img,
-.sheet-toggle-b > img{
-    position: absolute;
-    top: 0;
-    left: 0;
-}
-
-
-.sheet-attitude{
-    display:grid;
-    grid-template-columns: auto auto auto;
-    
-    background-color:var(--blue);
-    border-radius:10px;
-
-}
-.sheet-attitude > div{
-    display:block;
-    
-}
-.sheet-attitude > div > label{}
-.sheet-attitude > div > input{}
-
-.sheet-attitude-wrapper{
+.sheet-PMD-swap-wrapper input{
+    display:inline-block;
+    width:50px;
+    height:50px;
     position:relative;
-    top:0px;
-    left:0px;
-    padding:10px;
-    border:1px solid var(--border);
-    border-radius:10px;
+    z-index:1;
+    opacity:0;
 }
-.sheet-attitude-toggle[value="0"] ~ .sheet-toggle-a,
-.sheet-attitude-toggle[value="1"] ~ .sheet-toggle-b{
-    display:none;
-}
-.sheet-attitude-toggle[value="1"] ~ .sheet-toggle-a,
-.sheet-attitude-toggle[value="0"] ~ .sheet-toggle-b{
-    display:block;
-}
-
-.sheet-attitude-toggle[value="0"] ~ .sheet-toggle-tab-a,
-.sheet-attitude-toggle[value="1"] ~ .sheet-toggle-tab-b{
-    display:grid;
-}
-.sheet-attitude-toggle[value="1"] ~ .sheet-toggle-tab-a,
-.sheet-attitude-toggle[value="0"] ~ .sheet-toggle-tab-b{
-    display:none;
+.sheet-PMD-swap-wrapper img{
+    display:inline-block;
+    width:50px;
+    height:50px;
+    position:relative;
+    left:-50px;
 }
 
 /***************************
     Skills
 ***************************/
-
 .sheet-skills{
-    display:grid;
-    border:1px solid var(--border);
-    border-radius:10px;
-    padding:10px;
-    position:relative;
-}
-.sheet-skills-main{
-    display:grid;
-    grid-template-columns: auto auto auto auto;
-    border-radius:10px;
-    padding:3px;
-    background-color:var(--blue);
-    margin-bottom:5px;
     
 }
-.sheet-skills-main-PMD{
-    display:grid;
-    grid-template-columns: auto auto auto;
-    border-radius:10px;
-    padding:3px;
-    background-color:var(--blue);
-    margin-bottom:5px;
-}
-.sheet-large-skill label{
-    width: 100%;
-    text-align:center;
-}
-.sheet-large-skill input{
-    display: block;
-    margin: 5px auto;
-    width: 100px !important;
-}
-.sheet-skills-sub{
-    display:grid;
-    grid-template-columns: auto auto auto auto;
-    background-color:var(--foreground-highlight);
-    border-radius:10px;
-    padding:10px;
-    justify-content: space-around;
-}
-
-.sheet-skills-sub-PMD{
-    display:grid;
-    grid-template-columns: auto auto auto;
-    background-color:var(--foreground-highlight);
-    border-radius:10px;
-    padding:10px;
-    justify-content: space-around;
-}
-
-.sheet-skills-sub-PMD label,
-.sheet-skills-sub label{
-    width:75px;
-}
-
-
-.sheet-skills-col{
-
-    border-radius:10px;
-    padding:10px;
-}
-
-.sheet-skills-toggle-wrapper{}
-
-
-
-.sheet-skills-toggle[value="0"] ~ .sheet-toggle-a,
-.sheet-skills-toggle[value="0"] ~ .sheet-toggle-tab-a,
-.sheet-skills-toggle[value="1"] ~ .sheet-toggle-b,
-.sheet-skills-toggle[value="1"] ~ .sheet-toggle-tab-b{
-    display:none;
-}
-
-.sheet-skills-toggle[value="1"] ~ .sheet-toggle-a,
-.sheet-skills-toggle[value="0"] ~ .sheet-toggle-b{
+.sheet-skills .sheet-skills-main{
     display:block;
+    width:max-content;
+    margin:0 auto 2px;
+    border-radius:10px;
+    background-color:var(--blue);
+    padding: 5px 0px;
+}
+.sheet-skills .sheet-skills-sub{
+    display:block;
+    width:max-content;
+    margin:0 auto;
+    background-color:var(--foreground-highlight);
+    border-radius:10px;
+    padding:5px 0px;
+    color: var(--background);
+    text-shadow: 0px 0px 5px black;
+}
+.sheet-skills .sheet-skills-col > *{
+    margin-top:3px;
+}
+.sheet-skills .sheet-skills-col{
+    display:inline-block;
+    width:180px;
+}
+.sheet-skills .sheet-skills-col strong{
+    display:inline-block;   
+    width:100px;
+    text-align:right;
+}
+.sheet-skills .sheet-skills-col label{
+    display:block;
+    text-align:center
+}
+.sheet-skills .sheet-skills-col .sheet-field-labeled{
+    display:block;
+    width:100px;
+    margin:0 auto;
+    text-align:center;
 }
 
 /***************************
-    Trainer Bag
+    Inventory
 ***************************/
-
-.sheet-trainer-bag{
-    display:grid;
-    grid-template-areas:
-    'potions large large' 
-    'small   large large'
-    'badge   badge badge';
-    padding:10px;
-    column-gap:10px;
-    row-gap:10px;
+.sheet-inventory{}
+.sheet-inventory label,
+.sheet-inventory strong{
+    color:var(--background);
 }
-.sheet-trainer-bag > .sheet-potions-pocket,
-.sheet-trainer-bag > .sheet-small-pocket,
-.sheet-large-pocket,
-.sheet-trainer-bag > .sheet-badge-pocket{
-    background-color:var(--border);
+.sheet-inventory .sheet-header{
+    display:block;
+    
+    text-align:center;
+    
+    border-width:0 0 3px;
     border-radius:10px;
-    padding:10px;
-    color:white;
+    border-style:solid;
+    border-color:black;
+    margin-bottom:5px;
 }
-.sheet-trainer-bag label{
-    color:inherit;
+.sheet-inventory-divide{
+    display:grid;
+    grid-template-columns: 350px auto;
+    column-gap:10px;
+    margin-bottom:10px;
 }
-.sheet-trainer-bag > .sheet-potions-pocket{
-    display:inline-block;
-    width:auto;
-    grid-area:potions;
+.sheet-inventory .sheet-PMD-gear,
+.sheet-inventory .sheet-inventory-potions,
+.sheet-inventory .sheet-inventory-quick,
+.sheet-inventory .sheet-inventory-large,
+.sheet-inventory .sheet-inventory-notes{
+    display:block;
     background-color:var(--border);
-    color:white;
+    padding:5px;
+    border-radius:10px;
 }
-.sheet-trainer-bag > .sheet-potions-pocket label{
-    display: inline-block;
-    width: 40px;
-    height: auto;
-    text-align: center;
-    vertical-align: middle;
+.sheet-inventory .sheet-inventory-potions input{
+    text-align:center;
 }
-.sheet-trainer-bag > .sheet-potions-pocket strong{
-    text-align: center;
-    vertical-align: middle;
-}
-.sheet-trainer-bag > .sheet-potions-pocket .sheet-field-condensed span{
-    color:black;
+.sheet-inventory .sheet-inventory-quick{
+    min-height:70px;
 }
 
-.sheet-trainer-bag > .sheet-potions-pocket .sheet-field-condensed{
-    width:70px;
-}
-
-.sheet-trainer-bag > .sheet-small-pocket{
-    grid-area:small;
-    min-height: 50px;
-}
-
-.sheet-small-pocket-item{
-    display:block;
-    width:350px;
-    margin:3px auto 0;
-}
-.sheet-small-pocket-item > input{
-    width:100%;
-}
-.sheet-trainer-bag > .sheet-large-pocket{
-    grid-area:large;
-}
-.sheet-large-pocket-item{
-    display:block;
-    width:350px;
-    margin:3px auto 0;
-}
-.sheet-large-pocket-item > input{
+.sheet-inventory .sheet-inventory-item{
     display:block;
     width:90%;
-    margin:2px auto 0;
-    border-bottom:1px solid var(--border);
+    margin:0 auto 2px;
 }
-
-.sheet-trainer-bag > .sheet-badge-pocket{
-    grid-area:badge;
-}
-.sheet-small-pocket > label,
-.sheet-large-pocket > label{
+.sheet-inventory .sheet-inventory-item input,
+.sheet-inventory .sheet-quick-item input{
     display:block;
-    text-align:center;
-    border-bottom:3px solid var(--border);
-    border-radius:10px;
-}
-
-.sheet-garment{
     width:100%;
 }
-.sheet-PMD-item > *{
-    display:block;
-    width:70%;
-    margin:2px auto 0;
-    border-bottom:1px solid var(--border);
-}
-.sheet-pokemon-bag > *{
-    margin-top:5px;
-}
-
 
 /***************************
     Move
 ***************************/
-
-.repeating_moves{}
-.sheet-move-wrapper{
-    display:block;
-    margin:0 auto;
-    width:675px;
-    min-height:;
+.sheet-moves{}
+.sheet-moves .sheet-move-item{
     position:relative;
-    padding: 0 0 0 15px;
-    
 }
-.sheet-move-list{
-    min-height:100px;
-    
-}
-.sheet-move-list >label{
+.sheet-moves .sheet-header{
     display:block;
-    width:85%;
+    width:80%;
     margin:10px auto;
-    border-width: 0 0 2px 0;
-    border-bottom: solid var(--border);
+    text-align:center;
+    border: solid black;
+    border-width:0 0 3px 0;
     border-radius:10px;
-    text-align:center;
 }
 
-input.sheet-move-swap{
-    position:absolute;
-    top:7px;
-    left:0px;
-}
-
-.sheet-move{
-    border-radius: 10px;
-    background-color: var(--foreground-highlight);
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.sheet-move-wrapper input{
-    
-    border-width:0 0 1px 0;
-    border-bottom:1px solid var(--border);
-}
-.sheet-move-wrapper select{
-    
-    border:1px solid var(--border);
-    width:auto;
-}
-.sheet-move-wrapper textarea{
-    height: 100px;
-}
-.sheet-move-wrapper .sheet-move-name{
-    
-}
-.sheet-move .sheet-move-name{
-    width: 250px;
-    padding: 4px 10px 4px 5px;
-}
-
-.sheet-move-display .sheet-move-name{
-    width:auto;
-}
-.sheet-move-display span.sheet-field{
-    display: inline-block;
-    min-height: 20px;
-    min-width: 50px;
-    background: var(--section);
-    padding: 4px 10px;
-    font-weight: bold;
-    vertical-align: bottom;
-}
-.sheet-move-display button[type="roll"]{
-    width: 25px !important;
-    height 25px !important;
-    margin: 0;
-}
-
-.sheet-move-swap[value="0"] ~ .sheet-move-display,
-.sheet-move-swap[value="1"] ~ .sheet-move-edit{
-    display:none;
-}
-.sheet-move-swap[value="1"] ~ .sheet-move-display,
-.sheet-move-swap[value="0"] ~ .sheet-move-edit{
+.sheet-moves .sheet-move-item{
     display:block;
+    width: 700px;
+    margin: 0px auto 3px;
 }
 
-
-.sheet-move-collapse{
-    position:relative;
-}
-.sheet-move-collapse > input[type="checkbox"]{
-    position:relative;
-    left:5px;
-    width:20px;
-    opacity:0;
-    z-index:1;
-}
-.sheet-move-collapse img{
-    height:20px;
-}
-.sheet-move-collapse .sheet-hide-a > img,
-.sheet-move-collapse .sheet-hide-b > img{
-    position:relative;
-    left:-20px;
-}
-.sheet-minimize_box[value="0"] ~ .sheet-collapsable{
-    display:block;
-}
-.sheet-minimize_box[value="1"] ~ .sheet-collapsable{
-    display:none;
-}
-
-.sheet-move-manuever > span{
-    position: relative;
-    border-radius: 0px 15px 15px 0px;
-    margin-bottom: 1px;
-    padding: 3px 20px;
-    font-weight: bold;
-    font-size: 15px;
-    background-color: #ac4e34;
-    color: antiquewhite;
-    left: -9px;
-    
-}
-
-
-/***************************
-    Sheet Select
-***************************/
-
-.sheet-creature_toggle[value="1"] ~ .sheet-human,
-.sheet-creature_toggle[value="0"] ~ .sheet-pokemon{
-   /* display:none; */
-}
-
-.sheet-creature_toggle[value="0"] ~ .sheet-human,
-.sheet-creature_toggle[value="1"] ~ .sheet-pokemon{
-    display:block;
-}
-
-
-/***************************
-    Hide Swap
-***************************/
-.sheet-hide-swap{
-    
-}
-.sheet-hide-swap ~ .sheet-hide-a,
-.sheet-hide-swap:checked ~ .sheet-hide-b{
+.sheet-moves select{
     display:inline-block;
+    width:120px;
 }
-.sheet-hide-swap:checked ~ .sheet-hide-a,
-.sheet-hide-swap ~ .sheet-hide-b{
+
+.sheet-moves .sheet-move-header{
+    border-radius:10px 10px 0 0;
+    background-color:var(--foreground-highlight);
+    padding:3px 10px ;
+}
+.sheet-moves .sheet-move-body{
+    border-radius:0 0 10px 10px;
+    background-color:var(--section-highlight);
+    padding: 3px 15px;
+
+}
+.sheet-moves .sheet-move-known-wrapper{
+    position: absolute;
+    left: -25px;
+    top: 0px
+}
+.sheet-moves .sheet-move-known-wrapper input{
+    position:relative;
+    display:inline-block;
+    width:20px;
+    height:20px;
+    z-index:1;
+    opacity:0;
+}
+.sheet-moves .sheet-move-known-wrapper input+ span{
+    position:relative;
+    left: -25px;
+    top: 7px;
+    display:inline-block;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background-color:grey;
+    border:1px solid;
+}
+.sheet-moves .sheet-move-known-wrapper input:checked + span {
+    background-color:var(--foreground);   
+}
+
+
+.sheet-moves .sheet-move-display-mode[value="1"] ~ .sheet-move-edit,
+.sheet-moves .sheet-move-display-mode[value="0"] ~ .sheet-move-display{
     display:none;
-}   
-
-/***************************
-    Rolltemplate
-    --background:#faf3d7;
-    --background-highlight:;
-    --section:#cfccb8;
-    --section-highlight:#a5a599;
-    --foreground:#cd583c;
-    --foreground-highlight:#ac4e34;
-    --border:#3a3326;
-    --blue:#26b7b4;
-***************************/
-
-
-.sheet-rolltemplate-pokeroleMove{
-    width: 300px;
-    display: inline-block;
-
-    background-color:var(--background);
-    
 }
-.sheet-template-wrapper{
-    display:block;
-    background-color:#ac4e34;
-    color:#faf3d7;
+
+.sheet-move-display span.sheet-move-accuracy,
+.sheet-move-display span.sheet-move-damage{
+    display:inline-block;
+    width:100px;
+    font-size:10pt;
 }
-.sheet-template-header{
-    background-color:#cd583c;
+.sheet-move-display span.sheet-move-effect{
+    display:inline-block;
+    width:50px;
+    border-bottom:2px solid black;
+}
+.sheet-move-display span.sheet-move-effect-chance{
+    display:inline-block;
     text-align:center;
-}
-.sheet-template-row{
-    background-color:#cfccb8;
-    margin:0px 10px;
-    padding:2px 5px;
-    color:#3a3326;
+    width:20px;
 }
 
 
 
+
+
+
+.sheet-move-display-toggle[value="1"] ~ .sheet-move-edit,
+.sheet-move-display-toggle[value="0"] ~ .sheet-move-display{
+    display:none;
+}
 
