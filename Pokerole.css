@@ -483,11 +483,17 @@ input, select, textarea{
     width:90%;
     margin:0 auto 2px;
 }
-.sheet-inventory .sheet-inventory-item input,
-.sheet-inventory .sheet-quick-item input{
-    display:block;
-    width:100%;
+.sheet-inventory  input.sheet-item-name{
+    display:inline-block;
 }
+.sheet-inventory input.sheet-item-count{
+    display:inline-block;
+    width:30px;
+    margin-right:5px;
+    border-radius:50%;
+    font-weight:bold;
+}
+
 
 /***************************
     Move
