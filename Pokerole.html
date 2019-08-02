@@ -1027,7 +1027,7 @@
                     <input type="checkbox" name="attr_move_known" title="Move Known">
                     <span></span>
                 </span>
-                <input type="hidden" name="attr_move_accuracy_calc" value="@{move_accuracy_1} + @{move_accuracy_2} + @{move_accuracy_3}" disabled=true />
+                <input type="hidden" name="attr_move_accuracy_calc" value="@{move_accuracy_1} + @{move_accuracy_2} + @{move_accuracy_3} + (@{move_accuracy_mod})" disabled=true />
                 <input type="hidden" name="attr_move_damage_calc"   value="@{move_damage_attribute} + @{move_power} + @{move_has_stab}" />
                 
                 <div class="move-header">
@@ -1066,7 +1066,7 @@
                             <select class="move_cat"name="attr_move_category">
                                 <option>Physical</option>
                                 <option>Special</option>
-                                <option>Support</option>
+                                <option>Status</option>
                             </select> 
                             <span>Category</span>
                         </span>
@@ -1090,7 +1090,7 @@
                                 
                             </select>
                             <span>Target</span>
-                        </span>    
+                        </span> 
                         
                         <span class="move-edit-toggle-wrapper">
                             <input type="hidden" name="attr_move_display_mode" class="move-display-toggle" value="0"/>
@@ -1189,6 +1189,10 @@
                                     </optgroup>
                                 </select>
                             </span>
+                            <strong>+</strong>
+                            <span class="field-labeled" style="width: 50px; text-align:center" >
+                                <input type="number" name="attr_move_accuracy_mod" value="0"/>
+                            </span>
                             
                         </div>
                         
@@ -1253,7 +1257,7 @@
                                 <span style="font-size:10pt;font-weight:bolder;margin-right:10px;">Accuracy: </span>
                                 <span class="field-labeled" style="width:70px">
                                      <input type="number"  name="attr_move_accuracy_calc" 
-                                     value="@{move_accuracy_1} + @{move_accuracy_2} + @{move_accuracy_3}" disabled="true"/>
+                                     value="@{move_accuracy_1} + @{move_accuracy_2} + @{move_accuracy_3} + (@{move_accuracy_mod})" disabled="true"/>
                                     <span>Pool</span>
                                 </span>
                                 <button type="roll" name="roll_move_accuracy" 
@@ -1307,8 +1311,3 @@
     </div>
     
 </div>
-
-   
-
-
-
