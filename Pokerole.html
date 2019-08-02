@@ -12,10 +12,11 @@
 <input type="hidden" name="attr_accuracy_calc" value="(@{dexterity_calc}) + @{fight} + @{accuracy_attribute} + @{attr_accuracy_mod}" disabled="true"/>
 <input type="hidden" name="attr_evade_calc" value="(@{dexterity_calc}) + @{fight} + @{evasion} + @{attr_evade_mod}" disabled="true"/>
 
+<input type="hidden" name="attr_move_generic_calc" value="@{generic_attribute} + @{generic_skill} + @{generic_specialty}" />
 
 <div class="sheet-wrapper">
     
-    <input type="hidden" class="creature-toggle" name="attr_creature_mode" value=0 />
+    <input type="hidden" class="creature-toggle" name="attr_creature_mode" value="0" />
     <input type="hidden" name="attr_PMD_mode" class="PMD-toggle" value="0" />
     
     
@@ -62,6 +63,7 @@
             
             <div class="sheet-left-col" >
                 <input type="hidden" class="creature-toggle" name="attr_creature_mode"  value="0" />
+                <input type="hidden" name="attr_PMD_mode" class="PMD-toggle" value="0" />
                 
                 <div style="margin-bottom:5px;" class="sheet-trainer-only">
                     <span class="field-labeled" style="width:100%;">
@@ -126,7 +128,7 @@
                 </div>
                 
                 <div style="margin-bottom:5px;" >
-                    <input type="hidden" class="creature-toggle" name="attr_creature_mode"  value="2" />
+                    <input type="hidden" class="creature-toggle" name="attr_creature_mode"  value="0" />
                     
                     <span class="field-labeled" style="width:120px;">
                         <input type="text" name="attr_gender" style="text-align:center" />
@@ -176,7 +178,7 @@
                     </span>
                 </div>
                 
-                <div class="sheet-pokemon-only" style="margin-bottom:5px;" >
+                <div class="sheet-pokemon-only sheet-PMD-only" style="margin-bottom:5px;" >
                     <span class="field-labeled" style="width:100px;text-align:center">
                         <input type="number" name="attr_money"  />
                         <span>Apples</span>
@@ -340,7 +342,7 @@
         <div class="sheet-grid">
             
             <div class="sheet-left">
-                <input type="hidden" class="creature-toggle" name="attr_creature_mode" value=0 />
+                <input type="hidden" class="creature-toggle" name="attr_creature_mode" value="0" />
                 <div class="attribute-row">
                     <div class="battle">
                         
@@ -461,7 +463,8 @@
                     </div>
                 </div>
                 
-                <div class="sheet-bonuses">
+                <div class="sheet-rolls">
+                    <div class="sheet-bonuses">
                     <div style="display:inline-block;width:auto">
                         <div>
                             <span style="display:inline-block;width:200px">
@@ -500,7 +503,9 @@
                             <button type="roll" name="roll_clash"
                             value="&{template:default}{{name=@{character_name}'s Clash}}{{pool=[[@{clash_attribute}+@{clash}+@{fight}]] }}{{successes=[[(@{clash_attribute}+@{clash}+@{fight})d6>4s]] }}">Clash</button>
                         </div>
+                        
                     </div>
+                    
                     <div style="display:inline-block;width:140px;text-align:center">
                         <span class="field-labeled">
                             <input type="number" name="attr_defense_mod" min="-3" value="0" max="3" />
@@ -521,6 +526,66 @@
                         
                     </div>
                 </div>
+                
+                    <!-- Generic Rolls -->
+                    <div class="generic-roll">
+                        <span class="field-labeled" style="width:100px">
+                            <select name="attr_generic_attribute">
+                                <option value="@{strength_calc}">Strength</option>
+                                <option value="@{dexterity_calc}">Dexterity</option>
+                                <option value="@{vitality_calc}">Vitality</option>
+                                <option value="@{special_calc}">Special</option>
+                                <option value="@{insight_calc}">Insight</option>
+                                <option value="@{tough}">Tough</option>
+                                <option value="@{cool}">Cool</option>
+                                <option value="@{beauty}">Beauty</option>
+                                <option value="@{cute}">Cute</option>
+                                <option value="@{smart}">Smart</option>
+                                <option value="@{will}">Will</option>
+                            </select>
+                            <span title="">Attribute</span>
+                        </span>
+                        <strong>+</strong>
+                        <span class="field-labeled" style="width:100px">
+                            <select name="attr_generic_skill">
+                                <option value="@{fight}">Fight</option>
+                                <option value="@{survival}">Survival</option>
+                                <option value="@{contest}">Contest</option>
+                            </select>
+                            <span title="">Skill</span>
+                        </span>
+                        <strong>+</strong>
+                        <span class="field-labeled" style="width:100px">
+                            <select name="attr_generic_specialty">
+                                <optgroup label="Fight">              
+                                    <option value="@{brawl}">Brawl</option>
+                                    <option value="@{channel}">Channel</option>
+                                    <option value="@{clash}">Clash</option>
+                                    <option value="@{evasion}">Evasion</option>
+                                </optgroup>
+                                <optgroup label="Survive">
+                                    <option value="@{alert}">Alert</option>
+                                    <option value="@{athlete}">Athlete</option>
+                                    <option value="@{nature}">Nature</option>
+                                    <option value="@{stealth}">Stealth</option>
+                                </optgroup>
+                                <optgroup label="Contest">
+                                    <option value="@{allure}">Allure</option>
+                                    <option value="@{etiquette}">Etiquette</option>
+                                    <option value="@{intimidate}">Intimidate</option>
+                                    <option value="@{perform}">Perform</option>
+                                </optgroup>
+                            </select>
+                            <span title="">Specialty</span>
+                        </span>
+                        
+                        
+                        <button type="roll" name="roll_generic" 
+                        value="&{template:default}{{name=@{character_name}'s Roll }}{{pool=[[@{move_generic_calc} - ?{Penalties?|0}]] }}{{successes=[[(@{move_generic_calc} - ?{Penalties?|0})d6>4s]] }}">Roll</button>
+                    </div>
+                    
+                </div>
+                
             </div>
             
             <div class="sheet-right">
@@ -837,7 +902,7 @@
         <div class="inventory-divide">
             
             <div class="inventory-small">
-                <input type="hidden" class="creature-toggle" name="attr_creature_mode" value=0 />
+                <input type="hidden" class="creature-toggle" name="attr_creature_mode" value="0" />
                 
                 <div class="inventory-potions trainer-only" style="margin-bottom:3px;">
                     <div>
@@ -1078,7 +1143,6 @@
                             <span class="field-labeled">
                                 <select name="attr_move_accuracy_1" value="0" >
                                     <option value="0">-</option>
-                                    <option value="@{will}">Will</option>
                                     <option value="@{strength_calc}">Strength</option>
                                     <option value="@{dexterity_calc}">Dexterity</option>
                                     <option value="@{vitality_calc}">Vitality</option>
