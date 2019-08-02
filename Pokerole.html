@@ -1,5 +1,5 @@
 
-<input type="hidden" name="attr_sheet_version"  value="v1.1" />
+<input type="hidden" name="attr_sheet_version"  value="v1.2" />
 <input type="hidden" name="attr_strength_calc"  value="@{strength} + @{strength_bonus}" disabled="true"/>
 <input type="hidden" name="attr_dexterity_calc" value="@{dexterity} + @{dexterity_bonus}" disabled="true"/>
 <input type="hidden" name="attr_vitality_calc"  value="@{vitality} + @{vitality_bonus}" disabled="true"/>
@@ -1232,17 +1232,24 @@
                                     <span>Effect Chance</span>
                                 </span>
                             </span>
-                        </div>
                         
                         <div>
                             <textarea name="attr_move_description" style="height:65px"></textarea>
+                        </div>
+                        </div>
+                        
+                        <div class="move-experience">
+                            <span class="field-labeled" style="width:60px">
+                                <input type="text" name="attr_move_experience" min="0" value="0" />
+                                <span>EXP</span>
+                            </span>
                         </div>
                     </div>
                     
                     
                     <div class="move-display">
                         <div>
-                            <div style="display:inline-block;margin-right:20px">
+                            <div style="display:inline-block;margin-right:5px">
                                 <span style="font-size:10pt;font-weight:bolder;margin-right:10px;">Accuracy: </span>
                                 <span class="field-labeled" style="width:70px">
                                      <input type="number"  name="attr_move_accuracy_calc" 
@@ -1253,7 +1260,7 @@
                                 value="&{template:default}{{name=@{character_name}'s @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} - ?{Penalties?|0}]] }}{{successes=[[(@{move_accuracy_calc} - ?{Penalties?|0})d6>4s]] }}" ></button>
                             </div>
                             
-                            <div style="display:inline-block;margin-right:20px">
+                            <div style="display:inline-block;margin-right:5px">
                                 <span style="font-size:10pt;font-weight:bolder;margin-right:10px;">Damage: </span>
                                 <span class="field-labeled" style="width:70px">
                                     <input type="number"  name="attr_move_damage_calc"   value="@{move_damage_attribute} + @{move_power} + @{move_has_stab}"  disabled="true"/>
@@ -1263,7 +1270,7 @@
                                 value="&{template:default}{{name=@{character_name}'s @{move_name} Damage }}{{pool=[[@{move_damage_calc} - ?{Defense/Sp.Defense?|0}]] }}{{successes=[[(@{move_damage_calc} - ?{Defense/Sp.Defense?|0})d6>4s]] }}" ></button>
                             </div>
                             
-                            <div style="display:inline-block;margin-right:20px">
+                            <div style="display:inline-block;margin-right:5px">
                                 <span style="font-size:10pt;font-weight:bolder;margin-right:10px;">Effect: </span>
                                 
                                 <span class="field-labeled" style="width:85px">
@@ -1283,6 +1290,13 @@
                         <div style="border-top:1px solid black;margin-top:5px">
                             <span name="attr_move_description" style="display:block;width:80%;margin:0 auto"></span>
                         </div>
+                        <div class="move-experience">
+                            <span class="field-labeled" style="width:60px">
+                                <span  name="attr_move_experience"  ></span>
+                                <span>EXP</span>
+                            </span>
+                        </div>
+                        
                     </div>
                 </div>
             </div>
