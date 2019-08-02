@@ -2,7 +2,7 @@
 .charsheet{
     --background:#faf3d7;
     --background-highlight:;
-    --section:#cfccb8;
+    --section:#cfccb8; 
     --section-highlight:#a5a599;
     --foreground:#cd583c;
     --foreground-highlight:#ac4e34;
@@ -103,14 +103,15 @@ input, select, textarea{
     height:50px;
 }
 
-.sheet-creature-toggle[value="0"] ~ .sheet-pokemon-only,
-.sheet-creature-toggle[value="1"] ~ .sheet-trainer-only{
+
+.sheet-creature-toggle[value="1"] ~ .sheet-pokemon-only,
+.sheet-creature-toggle[value="0"] ~ .sheet-trainer-only{
     display:none;
 }
 
-.sheet-PMD-toggle[value="0"] ~ .sheet-Core-only,
-.sheet-PMD-toggle[value="1"] ~ .sheet-PMD-only{
-    display:none;
+.sheet-PMD-toggle[value="1"] ~ .sheet-Core-only,
+.sheet-PMD-toggle[value="0"] ~ .sheet-PMD-only{
+    display:none !important;
 }
 
 /***************************
@@ -301,7 +302,7 @@ input, select, textarea{
     background-color:var(--blue);
 }
 
-.sheet-attributes .sheet-bonuses,
+.sheet-attributes .sheet-bonuses{}
 .sheet-attributes .sheet-right{
     border-radius:10px;
     background-color:var(--border);
@@ -325,6 +326,19 @@ input, select, textarea{
 .sheet-attributes .sheet-hp-will strong{
     font-size: 15pt;
     vertical-align: middle;
+}
+.sheet-attributes .sheet-rolls{
+    border-radius:10px;
+    background-color:var(--border);
+    padding:5px;
+    
+}
+.sheet-generic-roll{
+    margin-top:10px;
+}
+.sheet-generic-roll strong{color:var(--section);}
+.sheet-generic-roll button[type="roll"]{
+    padding:2px 10px;
 }
 
 /***************************
@@ -537,7 +551,7 @@ input, select, textarea{
 .sheet-moves .sheet-move-known-wrapper{
     position: absolute;
     left: -25px;
-    top: 0px
+    top: 20px
 }
 .sheet-moves .sheet-move-known-wrapper input{
     position:relative;
@@ -584,7 +598,17 @@ input, select, textarea{
     text-align:center;
     width:20px;
 }
-
+.sheet-move-body{position:relative;}
+.sheet-move-body .sheet-move-edit .sheet-move-experience{
+    position:absolute;
+    top:0px;
+    right:40px;
+}
+.sheet-move-body .sheet-move-display .sheet-move-experience{
+    position: absolute;
+    top: 3px;
+    right: 3px;
+}
 
 
 
