@@ -41,6 +41,11 @@ input[type="number"],select{
     appearance:textfield;
     text-align:center;
 }
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 textarea{
     resize:vertical;
     box-sizing:border-box;
@@ -67,7 +72,7 @@ label{
 select{
     vertical-align: middle;
     margin: 0;
-    
+    text-align-last:center;
 }
 
 input, select, textarea{
