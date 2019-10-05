@@ -1,5 +1,6 @@
 
-<input type="hidden" name="attr_sheet_version"  value="v1.2.1" />
+<input type="hidden" name="attr_sheet_version"  value="v1.2.3" />
+
 <input type="hidden" name="attr_strength_calc"  value="@{strength} + @{strength_bonus}" disabled="true"/>
 <input type="hidden" name="attr_dexterity_calc" value="@{dexterity} + @{dexterity_bonus}" disabled="true"/>
 <input type="hidden" name="attr_vitality_calc"  value="@{vitality} + @{vitality_bonus}" disabled="true"/>
@@ -9,10 +10,12 @@
 <input type="hidden" name="attr_defense"   value="@{vitality} + @{attr_defense_mod}" disabled="true"/>
 <input type="hidden" name="attr_spdefense"   value="@{vitality} + @{attr_spdefense_mod}" disabled="true"/>
 
-<input type="hidden" name="attr_accuracy_calc" value="(@{dexterity_calc}) + @{fight} + @{accuracy_attribute} + @{attr_accuracy_mod}" disabled="true"/>
-<input type="hidden" name="attr_evade_calc" value="(@{dexterity_calc}) + @{fight} + @{evasion} + @{attr_evade_mod}" disabled="true"/>
+
+
 
 <input type="hidden" name="attr_move_generic_calc" value="@{generic_attribute} + @{generic_skill} + @{generic_specialty}" />
+
+
 
 <div class="sheet-wrapper">
     
@@ -74,7 +77,7 @@
                 
                 <div style="margin-bottom:5px;" class="sheet-pokemon-only">
                     <span class="field-labeled" style="width:160px;">
-                        <input type="text" name="attr_species" Placeholder="Pidgey" />
+                        <input type="text" name="attr_species"  />
                         <span>Species</span>
                     </span>
                     
@@ -343,6 +346,7 @@
             
             <div class="sheet-left">
                 <input type="hidden" class="creature-toggle" name="attr_creature_mode" value="0" />
+                
                 <div class="attribute-row">
                     <div class="battle">
                         
@@ -366,7 +370,6 @@
                         <input type="number" name="attr_tough" min="1" value="1" max="5" />
                     </div>
                 </div>
-                
                 <div class="attribute-row">
                     <div class="battle">
                         
@@ -390,7 +393,6 @@
                         <input type="number" name="attr_cool" min="1" value="1" max="5" />
                     </div>
                 </div>
-                
                 <div class="attribute-row">
                     <div class="battle">
                         
@@ -414,7 +416,6 @@
                         <input type="number" name="attr_beauty" min="1" value="1" max="5" />
                     </div>
                 </div>
-                
                 <div class="attribute-row pokemon-only">
                     <div class="battle">
                         
@@ -438,7 +439,6 @@
                         <input type="number" name="attr_cute" min="1" value="1" max="5" />
                     </div>
                 </div>
-                
                 <div class="attribute-row">
                     <div class="battle">
                         
@@ -463,128 +463,7 @@
                     </div>
                 </div>
                 
-                <div class="sheet-rolls">
-                    <div class="sheet-bonuses">
-                    <div style="display:inline-block;width:auto">
-                        <div>
-                            <span style="display:inline-block;width:200px">
-                                <strong>Dexterity + Survival + Alert</strong>
-                            </span>
-                            <button type="roll" name="roll_initiative" 
-                            value="&{template:default}{{name=@{character_name}'s Initiative }}{{initiative=[[1d6 + @{dexterity_calc} + @{survival} + @{alert} &{tracker}]] }}">Initiative</button>
-                        </div>
-                        <div>
-                            <span style="display:inline-block;width:200px">
-                                <strong>Dexterity + Fight + </strong>
-                                <select name="attr_accuracy_attribute" value="@{brawl}" style="width:auto">
-                                    <option value="@{brawl}">Brawl</option>
-                                    <option value="@{channel}">Channel</option>
-                                    <option value="@{melee}">Melee</option>
-                                </select>
-                            </span>
-                            <button type="roll" name="roll_accuracy" 
-                            value="&{template:default}{{name=@{character_name}'s Accuracy}}{{pool=[[@{dexterity_calc} + @{fight} + @{accuracy_attribute}]] }}{{successes=[[(@{dexterity_calc} + @{fight} + @{accuracy_attribute})d6>4s]] }}">Accuracy</button>
-                        </div>
-                        <div>
-                            <span style="display:inline-block;width:200px">
-                                <strong>Dexterity + Fight + Evasion</strong>
-                            </span>
-                            <button type="roll" name="roll_evade"
-                            value="&{template:default}{{name=@{character_name}'s Evade}}{{pool=[[@{dexterity_calc} + @{fight} + @{evasion}]] }}{{successes=[[(@{dexterity_calc} + @{fight} + @{evasion})d6>4s]] }}">Evade</button>
-                        </div>
-                        <div>
-                            <span style="display:inline-block;width:200px">
-                                <select name="attr_clash_attribute" value="@{strength}" style="width:auto" >
-                                    <option value="@{strength_calc}">Strength</option>
-                                    <option value="@{special_calc}">Special</option>
-                                </select>
-                                <strong>+ Fight + Clash</strong>
-                            </span>
-                            <button type="roll" name="roll_clash"
-                            value="&{template:default}{{name=@{character_name}'s Clash}}{{pool=[[@{clash_attribute}+@{clash}+@{fight}]] }}{{successes=[[(@{clash_attribute}+@{clash}+@{fight})d6>4s]] }}">Clash</button>
-                        </div>
-                        
-                    </div>
-                    
-                    <div style="display:inline-block;width:140px;text-align:center">
-                        <span class="field-labeled">
-                            <input type="number" name="attr_defense_mod" min="-3" value="0" max="3" />
-                            <span title="">Defense Mod</span>
-                        </span>
-                        <span class="field-labeled">
-                            <input type="number" name="attr_spdefense_mod" min="-3" value="0" max="3" />
-                            <span title="">Sp.Defense Mod</span>
-                        </span>
-                        <span class="field-labeled">
-                            <input type="number" name="attr_accuracy_mod" min="-3" value="0" max="3" />
-                            <span title="">Accuracy Mod</span>
-                        </span>
-                        <span class="field-labeled">
-                            <input type="number" name="attr_evade_mod" min="-3" value="0" max="3" />
-                            <span title="">Evade Mod</span>
-                        </span>
-                        
-                    </div>
-                </div>
                 
-                    <!-- Generic Rolls -->
-                    <div class="generic-roll">
-                        <span class="field-labeled" style="width:100px">
-                            <select name="attr_generic_attribute">
-                                <option value="@{strength_calc}">Strength</option>
-                                <option value="@{dexterity_calc}">Dexterity</option>
-                                <option value="@{vitality_calc}">Vitality</option>
-                                <option value="@{special_calc}">Special</option>
-                                <option value="@{insight_calc}">Insight</option>
-                                <option value="@{tough}">Tough</option>
-                                <option value="@{cool}">Cool</option>
-                                <option value="@{beauty}">Beauty</option>
-                                <option value="@{cute}">Cute</option>
-                                <option value="@{smart}">Smart</option>
-                                <option value="@{will}">Will</option>
-                            </select>
-                            <span title="">Attribute</span>
-                        </span>
-                        <strong>+</strong>
-                        <span class="field-labeled" style="width:100px">
-                            <select name="attr_generic_skill">
-                                <option value="@{fight}">Fight</option>
-                                <option value="@{survival}">Survival</option>
-                                <option value="@{contest}">Contest</option>
-                            </select>
-                            <span title="">Skill</span>
-                        </span>
-                        <strong>+</strong>
-                        <span class="field-labeled" style="width:100px">
-                            <select name="attr_generic_specialty">
-                                <optgroup label="Fight">              
-                                    <option value="@{brawl}">Brawl</option>
-                                    <option value="@{channel}">Channel</option>
-                                    <option value="@{clash}">Clash</option>
-                                    <option value="@{evasion}">Evasion</option>
-                                </optgroup>
-                                <optgroup label="Survive">
-                                    <option value="@{alert}">Alert</option>
-                                    <option value="@{athletic}">Athletic</option>
-                                    <option value="@{nature}">Nature</option>
-                                    <option value="@{stealth}">Stealth</option>
-                                </optgroup>
-                                <optgroup label="Contest">
-                                    <option value="@{allure}">Allure</option>
-                                    <option value="@{etiquette}">Etiquette</option>
-                                    <option value="@{intimidate}">Intimidate</option>
-                                    <option value="@{perform}">Perform</option>
-                                </optgroup>
-                            </select>
-                            <span title="">Specialty</span>
-                        </span>
-                        
-                        
-                        <button type="roll" name="roll_generic" 
-                        value="&{template:default}{{name=@{character_name}'s Roll }}{{pool=[[@{move_generic_calc} - ?{Penalties?|0}]] }}{{successes=[[(@{move_generic_calc} - ?{Penalties?|0})d6>4s]] }}">Roll</button>
-                    </div>
-                    
-                </div>
                 
             </div>
             
@@ -681,9 +560,226 @@
                         <input type="checkbox" name="attr_is_inLove" />
                     </div>
                 </div>
+                
             </div>
             
         </div>
+        
+        <div class="sheet-bonuses">
+
+                <div>
+                    
+                    <!-- Initiative -->
+                    <div>
+                        <span style="display:inline-block;width:180px">
+                            <span style="display:inline-block;width:100%">
+                                <strong>Dexterity + Survival + Alert</strong>
+                            </span>
+                        </span>
+                        <span style="display:inline-block;width:110px">
+                            <button type="roll" name="roll_initiative" 
+                            value="&{template:default}{{name=@{character_name}'s Initiative }}{{initiative=[[1d6 + (@{initiative_calc}) &{tracker}]] }}">Initiative</button>
+                        </span>
+                        <span style="display:inline-block;width:120px">
+                            <span class="field-labeled" style="display:inline-block;width:60px">
+                                <input type="number" name="attr_initiative_mod" value="0"  />
+                                <span title="">Mod</span>
+                            </span>
+                            <span class="field-labeled"  style="display:inline-block;width:50px">
+                                <input type="number" name="attr_initiative_calc" value="(@{dexterity_calc})+@{survival}+@{alert}+@{initiative_mod}" disabled="true" />
+                                <span title="">Value</span>
+                            </span>
+                        </span>
+                    </div>
+                    
+                    <!-- Accuracy -->
+                    <div>
+                        <span style="display:inline-block;width:180px">
+                            <strong>Dexterity + Fight + </strong>
+                            <select name="attr_accuracy_attribute" value="@{brawl}" style="width:auto">
+                                <option value="@{brawl}">Brawl</option>
+                                <option value="@{channel}">Channel</option>
+                                <option value="@{throw}">Throw</option>
+                                <option value="@{weapons}">Weapons</option>
+                            </select>
+                        </span>
+                        
+                        <span style="display:inline-block;width:110px">
+                            <button type="roll" name="roll_accuracy" 
+                            value="&{template:default}{{name=@{character_name}'s Accuracy}}{{pool=[[@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod}]] }}{{successes=[[(@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod})d6>4s]] }}">Accuracy</button>
+                        </span>
+                        
+                        <span style="display:inline-block;width:120px">
+                            <!--input type="hidden" name="attr_accuracy_calc" value="@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod}" /-->
+                            
+                            <span class="field-labeled" style="display:inline-block;width:60px">
+                                <input type="number" name="attr_accuracy_mod" value="0"  />
+                                <span title="">Mod</span>
+                            </span>
+                            <span class="field-labeled"  style="display:inline-block;width:50px">
+                                <input type="number" name="attr_accuracy_calc" value="@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod}" disabled="true" />
+                                <span>Value</span>
+                            </span>
+                        </span>
+                    </div>
+                    
+                    <!-- Evade -->
+                    <div>
+                        <span style="display:inline-block;width:180px">
+                            <strong>Dexterity + Fight + Evasion</strong>
+                        </span>
+                        
+                        <span style="display:inline-block;width:110px">
+                           <button type="roll" name="roll_evade"
+                        value="&{template:default}{{name=@{character_name}'s Evade}}{{pool=[[(@{dexterity_calc}) + @{fight} + @{evasion}]] }}{{successes=[[(@{dexterity_calc} + @{fight} + @{evasion})d6>4s]] }}">Evade</button>
+                        </span>
+                        
+                        <span style="display:inline-block;width:120px">
+                            <span class="field-labeled" style="display:inline-block;width:60px">
+                                <input type="number" name="attr_evade_mod" value="0"  />
+                                <span title="">Mod</span>
+                            </span>
+                            <span class="field-labeled"  style="display:inline-block;width:50px">
+                                <input type="number" name="attr_evade_calc" value="(@{dexterity_calc}) + @{fight} + @{evasion} + @{evade_mod}" disabled="true"/>
+                                <span title="">Value</span>
+                            </span>
+                        </span>
+                    </div> 
+                    
+                    <!-- Clash -->
+                    <div>
+                        <span style="display:inline-block;width:180px">
+                            <select name="attr_clash_attribute" value="@{strength_calc}" style="width:auto" >
+                                <option value="@{strength_calc}">Strength</option>
+                                <option value="@{special_calc}">Special</option>
+                            </select>
+                            <strong>+ Fight + Clash</strong>
+                        </span>
+                        
+                        <span style="display:inline-block;width:110px">
+                           <button type="roll" name="roll_clash"
+                        value="&{template:default}{{name=@{character_name}'s Clash}}{{pool=[[(@{clash_attribute})+@{clash}+@{fight}]] }}{{successes=[[(@{clash_attribute}+@{clash}+@{fight})d6>4s]] }}">Clash</button>
+                        </span>
+                        
+                        <span style="display:inline-block;width:120px">
+                            <span class="field-labeled " style="display:inline-block;width:60px">
+                                <input type="number" name="attr_clash_mod" value="0"  />
+                                <span title="">Mod</span>
+                            </span>
+                            <span class="field-labeled sheet-field-readonly"  style="display:inline-block;width:50px">
+                                <input type="number" name="attr_clash_calc" value="@{clash_attribute}+@{fight}+@{clash}" disabled="true"/>
+                                <span title="">Value</span>
+                            </span>
+                        </span>
+                    </div>
+                    
+                    
+                    
+                    <!-- Generic Rolls -->
+                    <div class="generic-roll">
+                        <span class="field-labeled" style="width:100px">
+                            <select name="attr_generic_attribute">
+                                <option value="@{strength_calc}">Strength</option>
+                                <option value="@{dexterity_calc}">Dexterity</option>
+                                <option value="@{vitality_calc}">Vitality</option>
+                                <option value="@{special_calc}">Special</option>
+                                <option value="@{insight_calc}">Insight</option>
+                                <option value="@{tough}">Tough</option>
+                                <option value="@{cool}">Cool</option>
+                                <option value="@{beauty}">Beauty</option>
+                                <option value="@{cute}">Cute</option>
+                                <option value="@{smart}">Smart</option>
+                                <option value="@{will}">Will</option>
+                            </select>
+                            <span title="">Attribute</span>
+                        </span>
+                        <strong>+</strong>
+                        <span class="field-labeled" style="width:100px">
+                            <select name="attr_generic_skill">
+                                <option value="@{fight}">Fight</option>
+                                <option value="@{survival}">Survival</option>
+                                <option value="@{contest}">Contest</option>
+                                <option value="@{knowledge}">Knowledge</option>
+                            </select>
+                            <span title="">Skill</span>
+                        </span>
+                        <strong>+</strong>
+                        <span class="field-labeled" style="width:100px">
+                            <select name="attr_generic_specialty">
+                                <optgroup label="Fight">              
+                                    <option value="@{brawl}">Brawl</option>
+                                    <option value="@{channel}">Channel</option>
+                                    <option value="@{clash}">Clash</option>
+                                    <option value="@{evasion}">Evasion</option>
+                                    <option value="@{throw}">Throw</option>
+                                    <option value="@{weapons}">Weapons</option>
+                                </optgroup>
+                                <optgroup label="Survive">
+                                    <option value="@{alert}">Alert</option>
+                                    <option value="@{athletic}">Athletic</option>
+                                    <option value="@{nature}">Nature</option>
+                                    <option value="@{stealth}">Stealth</option>
+                                </optgroup>
+                                <optgroup label="Contest">
+                                    <option value="@{allure}">Allure</option>
+                                    <option value="@{empath}">Empathy</option>
+                                    <option value="@{etiquette}">Etiquette</option>
+                                    <option value="@{intimidate}">Intimidate</option>
+                                    <option value="@{perform}">Perform</option>
+                                </optgroup>
+                                <optgroup label="Knowledge">
+                                    <option value="@{crafts}">Crafts</option>
+                                    <option value="@{lore}">Lore</option>
+                                    <option value="@{medicine}">Medicine</option>
+                                    <option value="@{science}">Science</option>
+                                </optgroup>
+                            </select>
+                            <span title="">Specialty</span>
+                        </span>
+                        
+                        <button type="roll" name="roll_generic" 
+                        value="&{template:default}{{name=@{character_name}'s Roll }}{{pool=[[@{move_generic_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_generic_calc} + (?{Modifier|0}) )d6>4s]] }}">Roll</button>
+                    </div>
+                    
+                </div>
+                
+                <div style="box-sizing: border-box;-webkit-box-sizing: border-box;">
+                    
+                    <!-- Defenses -->
+                    <div >
+                        <strong>Vitality + </strong>
+                        <span class="field-labeled" style="display:inline-block;width:100px;text-align:center">
+                            <input type="number" name="attr_defense_mod"  value="0" />
+                            <span title="">Defense Mod</span>
+                        </span>
+                        <strong>→</strong>
+                        <span class="field-labeled sheet-field-readonly" style="display:inline-block;width:70px;text-align:center">
+                            <input type="number" name="attr_defense_calc" value="@{vitality_calc}+@{defense_mod}" disabled="true"/>
+                            <span title="">Defense</span>
+                        </span>
+                        
+                    </div>
+                    
+                    <div>
+                        <strong>Vitality + </strong>
+                        <span class="field-labeled" style="display:inline-block;width:100px;text-align:center">
+                            <input type="number" name="attr_spdefense_mod"  value="0"  />
+                            <span title="">Sp.Defense Mod</span>
+                        </span>
+                        <strong>→</strong>
+                        <span class="field-labeled sheet-field-readonly" style="display:inline-block;width:70px;text-align:center">
+                            <input type="number" name="attr_spdefense_calc" value="@{vitality_calc}+@{spdefense_mod}" disabled="true"/>
+                            <span title="">Sp.Defense</span>
+                        </span>
+                    </div>
+                    
+                    <button type="roll" style="display: block; width: auto ; margin: 0 auto;padding: 3px 20px;"
+                    value="&{template:default}{{name=@{character_name}'s Luck Dice}}{{success=[[1d6>6s]]}}">Luck Dice</button>
+                    
+                </div>
+
+        </div>
+        
     </div>
     
     <!----------------------------------------------------
@@ -1163,6 +1259,7 @@
                                     <option value="@{fight}">Fight</option>
                                     <option value="@{survival}">Survival</option>
                                     <option value="@{contest}">Contest</option>
+                                    <option value="@{knowledge}">Knowledge</option>
                                 </select> 
                             </span> <strong>+</strong>
                             
@@ -1174,6 +1271,8 @@
                                         <option value="@{channel}">Channel</option>
                                         <option value="@{clash}">Clash</option>
                                         <option value="@{evasion}">Evasion</option>
+                                        <option value="@{thrown}">Thrown</option>
+                                        <option value="@{weapons}">Weapons</option>
                                     </optgroup>
                                     <optgroup label="Survive">
                                         <option value="@{alert}">Alert</option>
@@ -1183,10 +1282,17 @@
                                     </optgroup>
                                     <optgroup label="Contest">
                                         <option value="@{allure}">Allure</option>
+                                        <option value="@{empath}">Empathy</option>
                                         <option value="@{etiquette}">Etiquette</option>
                                         <option value="@{intimidate}">Intimidate</option>
                                         <option value="@{perform}">Perform</option>
                                     </optgroup>
+                                    <optgroup label="Knowledge">
+                                    <option value="@{crafts}">Crafts</option>
+                                    <option value="@{lore}">Lore</option>
+                                    <option value="@{medicine}">Medicine</option>
+                                    <option value="@{science}">Science</option>
+                                </optgroup>
                                 </select>
                             </span>
                             <strong>+</strong>
@@ -1261,7 +1367,7 @@
                                     <span>Pool</span>
                                 </span>
                                 <button type="roll" name="roll_move_accuracy" 
-                                value="&{template:default}{{name=@{character_name}'s @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} - ?{Penalties?|0}]] }}{{successes=[[(@{move_accuracy_calc} - ?{Penalties?|0})d6>4s]] }}" ></button>
+                                value="&{template:default}{{name=@{character_name}'s @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_accuracy_calc} + (?{Modifier|0}) )d6>4s]] }}" ></button>
                             </div>
                             
                             <div style="display:inline-block;margin-right:5px">
@@ -1271,7 +1377,7 @@
                                     <span>Pool</span>
                                 </span>
                                 <button type="roll" name="roll_move_damage" 
-                                value="&{template:default}{{name=@{character_name}'s @{move_name} Damage }}{{pool=[[@{move_damage_calc} - ?{Defense/Sp.Defense?|0}]] }}{{successes=[[(@{move_damage_calc} - ?{Defense/Sp.Defense?|0})d6>4s]] }}" ></button>
+                                value="&{template:default}{{name=@{character_name}'s @{move_name} Damage }}{{type=@{move_type}}}{{pool=[[@{move_damage_calc} - ?{Defense/Sp.Defense?|0}]] }}{{successes=[[(@{move_damage_calc} - ?{Defense/Sp.Defense?|0})d6>4s]] }}" ></button>
                             </div>
                             
                             <div style="display:inline-block;margin-right:5px">
@@ -1279,7 +1385,7 @@
                                 
                                 <span class="field-labeled" style="width:85px">
                                     <span type="text" name="attr_move_effect" >None</span>
-                                    <span>Support</span>
+                                    <span>Status</span>
                                 </span>
                                 <span class="field-labeled" style="width:55px;text-align:center;">
                                     <span type="number" name="attr_move_effect_chance" >0</span>
@@ -1292,7 +1398,7 @@
                             </div>
                         </div>
                         <div style="border-top:1px solid black;margin-top:5px">
-                            <span name="attr_move_description" style="display:block;width:80%;margin:0 auto"></span>
+                            <span class="sheet-move-descr" name="attr_move_description" ></span>
                         </div>
                         <div class="move-experience">
                             <span class="field-labeled" style="width:60px">
