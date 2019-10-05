@@ -738,7 +738,7 @@
                         </span>
                         
                         <button type="roll" name="roll_generic" 
-                        value="&{template:default}{{name=@{character_name}'s Roll }}{{pool=[[@{move_generic_calc} - ?{Penalties?|0}]] }}{{successes=[[(@{move_generic_calc} - ?{Penalties?|0})d6>4s]] }}">Roll</button>
+                        value="&{template:default}{{name=@{character_name}'s Roll }}{{pool=[[@{move_generic_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_generic_calc} + (?{Modifier|0}) )d6>4s]] }}">Roll</button>
                     </div>
                     
                 </div>
@@ -1367,7 +1367,7 @@
                                     <span>Pool</span>
                                 </span>
                                 <button type="roll" name="roll_move_accuracy" 
-                                value="&{template:default}{{name=@{character_name}'s @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} - ?{Penalties?|0}]] }}{{successes=[[(@{move_accuracy_calc} - ?{Penalties?|0})d6>4s]] }}" ></button>
+                                value="&{template:default}{{name=@{character_name}'s @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_accuracy_calc} + (?{Modifier|0}) )d6>4s]] }}" ></button>
                             </div>
                             
                             <div style="display:inline-block;margin-right:5px">
