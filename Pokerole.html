@@ -571,7 +571,7 @@
                     
                     <!-- Initiative -->
                     <div>
-                        <span style="display:inline-block;width:170px">
+                        <span style="display:inline-block;width:180px">
                             <span style="display:inline-block;width:100%">
                                 <strong>Dexterity + Survival + Alert</strong>
                             </span>
@@ -594,11 +594,13 @@
                     
                     <!-- Accuracy -->
                     <div>
-                        <span style="display:inline-block;width:170px">
+                        <span style="display:inline-block;width:180px">
                             <strong>Dexterity + Fight + </strong>
                             <select name="attr_accuracy_attribute" value="@{brawl}" style="width:auto">
                                 <option value="@{brawl}">Brawl</option>
                                 <option value="@{channel}">Channel</option>
+                                <option value="@{throw}">Throw</option>
+                                <option value="@{weapons}">Weapons</option>
                             </select>
                         </span>
                         
@@ -623,7 +625,7 @@
                     
                     <!-- Evade -->
                     <div>
-                        <span style="display:inline-block;width:170px">
+                        <span style="display:inline-block;width:180px">
                             <strong>Dexterity + Fight + Evasion</strong>
                         </span>
                         
@@ -646,7 +648,7 @@
                     
                     <!-- Clash -->
                     <div>
-                        <span style="display:inline-block;width:170px">
+                        <span style="display:inline-block;width:180px">
                             <select name="attr_clash_attribute" value="@{strength_calc}" style="width:auto" >
                                 <option value="@{strength_calc}">Strength</option>
                                 <option value="@{special_calc}">Special</option>
@@ -697,6 +699,7 @@
                                 <option value="@{fight}">Fight</option>
                                 <option value="@{survival}">Survival</option>
                                 <option value="@{contest}">Contest</option>
+                                <option value="@{knowledge}">Knowledge</option>
                             </select>
                             <span title="">Skill</span>
                         </span>
@@ -708,6 +711,8 @@
                                     <option value="@{channel}">Channel</option>
                                     <option value="@{clash}">Clash</option>
                                     <option value="@{evasion}">Evasion</option>
+                                    <option value="@{throw}">Throw</option>
+                                    <option value="@{weapons}">Weapons</option>
                                 </optgroup>
                                 <optgroup label="Survive">
                                     <option value="@{alert}">Alert</option>
@@ -717,9 +722,16 @@
                                 </optgroup>
                                 <optgroup label="Contest">
                                     <option value="@{allure}">Allure</option>
+                                    <option value="@{empath}">Empathy</option>
                                     <option value="@{etiquette}">Etiquette</option>
                                     <option value="@{intimidate}">Intimidate</option>
                                     <option value="@{perform}">Perform</option>
+                                </optgroup>
+                                <optgroup label="Knowledge">
+                                    <option value="@{crafts}">Crafts</option>
+                                    <option value="@{lore}">Lore</option>
+                                    <option value="@{medicine}">Medicine</option>
+                                    <option value="@{science}">Science</option>
                                 </optgroup>
                             </select>
                             <span title="">Specialty</span>
@@ -1247,6 +1259,7 @@
                                     <option value="@{fight}">Fight</option>
                                     <option value="@{survival}">Survival</option>
                                     <option value="@{contest}">Contest</option>
+                                    <option value="@{knowledge}">Knowledge</option>
                                 </select> 
                             </span> <strong>+</strong>
                             
@@ -1258,6 +1271,8 @@
                                         <option value="@{channel}">Channel</option>
                                         <option value="@{clash}">Clash</option>
                                         <option value="@{evasion}">Evasion</option>
+                                        <option value="@{thrown}">Thrown</option>
+                                        <option value="@{weapons}">Weapons</option>
                                     </optgroup>
                                     <optgroup label="Survive">
                                         <option value="@{alert}">Alert</option>
@@ -1267,10 +1282,17 @@
                                     </optgroup>
                                     <optgroup label="Contest">
                                         <option value="@{allure}">Allure</option>
+                                        <option value="@{empath}">Empathy</option>
                                         <option value="@{etiquette}">Etiquette</option>
                                         <option value="@{intimidate}">Intimidate</option>
                                         <option value="@{perform}">Perform</option>
                                     </optgroup>
+                                    <optgroup label="Knowledge">
+                                    <option value="@{crafts}">Crafts</option>
+                                    <option value="@{lore}">Lore</option>
+                                    <option value="@{medicine}">Medicine</option>
+                                    <option value="@{science}">Science</option>
+                                </optgroup>
                                 </select>
                             </span>
                             <strong>+</strong>

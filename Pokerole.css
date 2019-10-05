@@ -77,7 +77,7 @@ label{
 select{
     vertical-align: middle;
     margin: 0;
-    
+    text-align-last:center;
 }
 
 input, select, textarea{
