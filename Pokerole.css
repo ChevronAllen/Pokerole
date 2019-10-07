@@ -181,7 +181,7 @@ input, select, textarea{
     font-size:x-small;
     font-weight:bold;
     color:grey;
-    
+    pointer-events: none;
 }
 
 .sheet-field-labeled > input[disabled="true"],
