@@ -17,7 +17,8 @@
     
 }
 
-
+.repcontrol_add{}
+.repcontrol_edit{}
 
 div.sheet-section{
     position:relative;
@@ -28,14 +29,22 @@ div.sheet-section{
     border-color:var(-border);
     margin-bottom:10px;
     background-color:var(--section);
+    
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
     box-sizing:border-box;
 }
 
 input[type="checkbox"]{
     display:inline;
 }
-
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
 input[type="number"],select{
+    
     -webkit-appearance:textfield;
     -moz-appearance:textfield;
     appearance:textfield;
@@ -63,11 +72,12 @@ label{
     width:auto;
     margin:0;
     vertical-align: middle;
+    padding:0px;
 }
 select{
     vertical-align: middle;
     margin: 0;
-    
+    text-align-last:center;
 }
 
 input, select, textarea{
@@ -151,6 +161,7 @@ input, select, textarea{
     padding:10px 15px 2px 15px;
     text-align:inherit;
     width:100% !important;
+    height:100% !important;
     color:black;
 }
 .sheet-field-labeled > textarea{
@@ -170,7 +181,24 @@ input, select, textarea{
     font-size:x-small;
     font-weight:bold;
     color:grey;
+    
 }
+
+.sheet-field-labeled > input[disabled="true"],
+.sheet-field-labeled > span:first-child{
+    border-radius:5px;
+    border:1px black solid;
+    background-color:#e8e1c5;
+}
+
+.sheet-field-labeled > input[disabled="true"] + span,
+.sheet-field-labeled > span:first-child + span{
+    width:100%;
+    left:0px;
+    text-align:center;
+    color:black;
+}
+
 
 /***************************
     Character Info
@@ -276,7 +304,7 @@ input, select, textarea{
 
 .sheet-attributes .sheet-attribute-row{
     display:block;
-    margin-bottom:10px;
+    margin-top:13px;
 }
 .sheet-attributes .sheet-battle,
 .sheet-attributes .sheet-contest{
@@ -302,22 +330,15 @@ input, select, textarea{
     background-color:var(--blue);
 }
 
-.sheet-attributes .sheet-bonuses{}
 .sheet-attributes .sheet-right{
     border-radius:10px;
     background-color:var(--border);
     padding:5px;
-}
-.sheet-attributes .sheet-bonuses strong{
-    color:var(--section);
-}
-
-.sheet-attributes .sheet-bonuses button{
-    padding:2px 5px;
-    width:90px;
+    
 }
 .sheet-attributes .sheet-hp-will{
     color:var(--section);
+    padding: 0 5px;
 }
 .sheet-attributes .sheet-hp-will .sheet-field-labeled{
     width:70px;
@@ -327,10 +348,28 @@ input, select, textarea{
     font-size: 15pt;
     vertical-align: middle;
 }
-.sheet-attributes .sheet-rolls{
+
+.sheet-attributes .sheet-bonuses{
+    display:grid;
+    grid-template-columns: 60% auto;
+    column-gap:5px;
+    padding:5px 10px;
+}
+.sheet-attributes .sheet-bonuses strong{
+    color:var(--section);
+    font-size: 9pt;
+}
+.sheet-attributes .sheet-bonuses button{
+    padding:2px 5px;
+    width:90px;
+}
+
+
+.sheet-attributes .sheet-bonuses{
+    margin-top:5px;
     border-radius:10px;
     background-color:var(--border);
-    padding:5px;
+    padding:5px 10px;
     
 }
 .sheet-generic-roll{
@@ -338,6 +377,7 @@ input, select, textarea{
 }
 .sheet-generic-roll strong{color:var(--section);}
 .sheet-generic-roll button[type="roll"]{
+    width:70px;
     padding:2px 10px;
 }
 
@@ -610,6 +650,13 @@ input, select, textarea{
     right: 3px;
 }
 
+.sheet-move-display span.sheet-move-descr{
+    display:block;
+    width:80%;
+    height:auto;
+    min-height:25px;
+    margin:0 auto;
+}
 
 
 
