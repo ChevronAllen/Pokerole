@@ -1,0 +1,31 @@
+{
+	"html": "Pokerole.html",
+	"css": "Pokerole.css",
+	"authors": "Chevron Allen",
+	"roll20userid": "2130808",
+	"patreon": "",
+	"tipeee": "",
+	"preview": "Pokerole.jpg",
+    "instructions": "",
+    "useroptions": [
+        {
+            "attribute": "creature_mode",
+            "displayname": "Default Creature",
+            "type": "select",
+            "options": [
+                "Trainer|0",
+                "Pokemon|1"
+            ],
+            "default": "1",
+            "description": "Set the default view for new sheets.",
+        },
+        {
+            "attribute": "PMD_mode",
+            "displayname": "PMD",
+            "type": "checkbox",
+            "value": "1",
+            "default": "0",
+            "description": "Set the default view for new sheets.",
+        }
+    ]
+}
