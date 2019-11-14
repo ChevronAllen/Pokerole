@@ -1,5 +1,5 @@
 
-<input type="hidden" name="attr_sheet_version"  value="v1.2.3" />
+<input type="hidden" name="attr_sheet_version"  value="v1.2.4" />
 
 <input type="hidden" name="attr_strength_calc"  value="@{strength} + @{strength_bonus}" disabled="true"/>
 <input type="hidden" name="attr_dexterity_calc" value="@{dexterity} + @{dexterity_bonus}" disabled="true"/>
@@ -10,10 +10,9 @@
 <input type="hidden" name="attr_defense"   value="@{vitality} + @{attr_defense_mod}" disabled="true"/>
 <input type="hidden" name="attr_spdefense"   value="@{vitality} + @{attr_spdefense_mod}" disabled="true"/>
 
-
-
-
 <input type="hidden" name="attr_move_generic_calc" value="@{generic_attribute} + @{generic_skill} + @{generic_specialty}" />
+
+
 
 
 
@@ -22,7 +21,16 @@
     <input type="hidden" class="creature-toggle" name="attr_creature_mode" value="0" />
     <input type="hidden" name="attr_PMD_mode" class="PMD-toggle" value="0" />
     
-    
+    <div class='sheet-toggle-header'>
+        <div class='sheet-toggle'>
+            <input type="radio" name="attr_whisper" title="GM rolls" value="/w gm" checked/>
+            <span>GM</span>
+        </div>
+        <div class='sheet-toggle'>
+            <input type="radio" name="attr_whisper" title="Public rolls " value=" " />
+            <span>Public</span>
+        </div>
+    </div>
    
      
     <!----------------------------------------------------
@@ -31,23 +39,23 @@
     <div class="sheet-section sheet-character-info">
         <div class="header">
             <span class="field-labeled" style="width:300px">
-                <input type="text" name="attr_character_name"  />
+                <input type="text" name="attr_character_name" title="@{character_name}"  />
                 <span>Name</span>
             </span>
             <span class="field-labeled" style="width:70px;text-align:center;margin-left:40px;">
-                <input type="number" name="attr_level" min="1" value="1" />
+                <input type="number" name="attr_level" title="@{level}" min="1" value="1" />
                 <span>Level</span>
             </span>
             <span class="field-labeled" style="width:90px;text-align:center;margin-left:20px;">
-                <input type="number" name="attr_exp_earned" value="0" min="0" />
+                <input type="number" name="attr_exp_earned" title="@{exp_earned}" value="0" min="0" />
                 <span>EXP Earned</span>
             </span>
             <span class="field-labeled" style="width:90px;text-align:center">
-                <input type="number" name="attr_exp_spent" value="0" min="0" />
+                <input type="number" name="attr_exp_spent" title="@{exp_spent}" value="0" min="0" />
                 <span>EXP Spent</span>
             </span>
             <span class="field-labeled" style="width:120px;text-align:center">
-                <input  type="number" name="attr_exp_remaining"  value="@{exp_earned} - @{exp_spent}" disabled="true" />
+                <input  type="number" name="attr_exp_remaining" title="@{exp_remaining}"  value="@{exp_earned} - @{exp_spent}" disabled="true" />
                 <span>EXP Remaining</span>
             </span>
         </div>
@@ -55,7 +63,7 @@
         <span class="sheet-creature-toggle-wrapper">
             <input type="hidden" class="creature-toggle" name="attr_creature_mode"  value="0" />
             
-            <input type="checkbox" name="attr_creature_mode" value="1" title="Trainer or Pokemon" >
+            <input type="checkbox" name="attr_creature_mode"  value="1" title="Trainer or Pokemon" >
             
             <img class="sheet-trainer-only" src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/Trainer-Icon.png" />
             <img class="sheet-pokemon-only" src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/Pokeball-Min-Icon.png" />
@@ -70,19 +78,19 @@
                 
                 <div style="margin-bottom:5px;" class="sheet-trainer-only">
                     <span class="field-labeled" style="width:100%;">
-                        <input type="text" name="attr_concept"  />
+                        <input type="text" name="attr_concept" title="@{concept}"  />
                         <span>Concept</span>
                     </span>
                 </div>
                 
                 <div style="margin-bottom:5px;" class="sheet-pokemon-only">
                     <span class="field-labeled" style="width:160px;">
-                        <input type="text" name="attr_species"  />
+                        <input type="text" name="attr_species" title="@{species}" />
                         <span>Species</span>
                     </span>
                     
                     <span class="field-labeled" style="width:100px" >
-                        <select name="attr_type_1" >
+                        <select name="attr_type_1" title="@{type_1}" >
                             <option>Normal</option>
                             <option>Bug</option>
                             <option>Dark</option>
@@ -105,7 +113,7 @@
                         <span>Type</span>
                     </span>
                     <span class="field-labeled" style="width:100px" >
-                        <select name="attr_type_2" >
+                        <select name="attr_type_2" title="@{type_2}" >
                             <option>-</option>
                             <option>Normal</option>
                             <option>Bug</option>
@@ -131,14 +139,14 @@
                 </div>
                 
                 <div style="margin-bottom:5px;" >
-                    <input type="hidden" class="creature-toggle" name="attr_creature_mode"  value="0" />
+                    <input type="hidden" class="creature-toggle" name="attr_creature_mode"   value="0" />
                     
                     <span class="field-labeled" style="width:120px;">
-                        <input type="text" name="attr_gender" style="text-align:center" />
+                        <input type="text" name="attr_gender" title="@{gender}" style="text-align:center" />
                         <span>Gender</span>
                     </span>
                     <span class="field-labeled" style="width:100px">
-                        <select name="attr_character_nature" >
+                        <select name="attr_character_nature" title="@{character_nature}" >
                             <option>Adamant</option>
                             <option>Bashful</option>
                             <option>Bold</option>
@@ -169,32 +177,32 @@
                     </span>
                     
                     <span class="field-labeled sheet-trainer-only" style="width:70px;text-align:center">
-                        <input type="number" name="attr_age"  />
+                        <input type="number" name="attr_age" title="@{age}" />
                         <span>Age</span>
                     </span>
                 </div>
                 
                 <div class="sheet-trainer-only" style="margin-bottom:5px;" >
                     <span class="field-labeled" style="width:100px;text-align:center">
-                        <input type="number" name="attr_money"  />
+                        <input type="number" name="attr_money" title="@{money}" />
                         <span>Money</span>
                     </span>
                 </div>
                 
                 <div class="sheet-pokemon-only sheet-PMD-only" style="margin-bottom:5px;" >
                     <span class="field-labeled" style="width:100px;text-align:center">
-                        <input type="number" name="attr_money"  />
+                        <input type="number" name="attr_money" title="@{money}"  />
                         <span>Apples</span>
                     </span>
                 </div>
                 
                 <div style="margin-bottom:5px;" class="sheet-pokemon-only">
                     <span class="field-labeled" style="width:120px;">
-                        <input type="text" name="attr_size" style="text-align:center" />
+                        <input type="text" name="attr_size" title="@{size}" style="text-align:center" />
                         <span>Size</span>
                     </span>
                     <span class="field-labeled" style="width:120px;">
-                        <input type="text" name="attr_weight" style="text-align:center" />
+                        <input type="text" name="attr_weight" title="@{weight}" style="text-align:center" />
                         <span>Weight</span>
                     </span>
                 </div>
@@ -202,35 +210,35 @@
             </div>
             
             <div class="sheet-right-col" >
-                <input type="hidden" class="creature-toggle" name="attr_creature_mode"  value="0" />
+                <input type="hidden" class="creature-toggle" name="attr_creature_mode"   value="0" />
                 
                 <div class="pokemon-only">
                     
                     <div>
                         <span class="field-labeled" style="width:170px;text-align:center">
-                            <input  type="text" name="attr_ability" />
+                            <input  type="text" name="attr_ability" title="@{ability}" />
                             <span>Ability</span>
                         </span>
                         <span class="field-labeled" style="width:70px;text-align:center">
-                            <input  type="number" name="attr_ability_chance" min="0" value="0" />
+                            <input  type="number" name="attr_ability_chance" title="@{ability_chance}" min="0" value="0" />
                             <span>Chance</span>
                         </span>
                         <button type="roll" name="roll_ability_chance" 
-                        value="&{template:default}{{name=@{character_name}'s @{ability} }}{{pool=[[(@{ability_chance})]] }}{{successes=[[(@{ability_chance})d6>6s]] }}{{description=@{ability_descr} }}"></button>
+                        value="@{whisper} &{template:default}{{name=@{character_name}'s @{ability} }}{{pool=[[(@{ability_chance})]] }}{{successes=[[(@{ability_chance})d6>6s]] }}{{description=@{ability_descr} }}"></button>
                     </div>
                     <div>
-                        <textarea name="attr_ability_descr" style="height:75px"></textarea>
+                        <textarea name="attr_ability_descr" title="@{ability_descr}" style="height:75px"></textarea>
                     </div>
                 </div>
                 
                 <div class="trainer-only">
                     <div style="margin-bottom:10px">
                         <span class="party-pokeball">
-                            <input type="hidden" class="pokeball-state" name="attr_pokemon_slot_1_state" value="0" />
+                            <input type="hidden" class="pokeball-state" name="attr_pokemon_slot_1_state"  value="0" />
                             
-                            <input type="radio" name="attr_pokemon_slot_1_state" class="pokeball-state-locked" value="0"/>
-                            <input type="radio" name="attr_pokemon_slot_1_state" class="pokeball-state-closed" value="1"/>
-                            <input type="radio" name="attr_pokemon_slot_1_state" class="pokeball-state-opened" value="2"/>
+                            <input type="radio" name="attr_pokemon_slot_1_state" title="@{pokemon_slot_1_state}" class="pokeball-state-locked" value="0"/>
+                            <input type="radio" name="attr_pokemon_slot_1_state" title="@{pokemon_slot_1_state}" class="pokeball-state-closed" value="1"/>
+                            <input type="radio" name="attr_pokemon_slot_1_state" title="@{pokemon_slot_1_state}" class="pokeball-state-opened" value="2"/>
                             
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-closed.png" title="Closed" class="pokeball-state-closed"/>
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-opened.png" title="Opened" class="pokeball-state-opened"/>
@@ -242,9 +250,9 @@
                         <span class="party-pokeball">
                             <input type="hidden" class="pokeball-state" name="attr_pokemon_slot_2_state" value="0" />
                             
-                            <input type="radio" name="attr_pokemon_slot_2_state" class="pokeball-state-locked" value="0"/>
-                            <input type="radio" name="attr_pokemon_slot_2_state" class="pokeball-state-closed" value="1"/>
-                            <input type="radio" name="attr_pokemon_slot_2_state" class="pokeball-state-opened" value="2"/>
+                            <input type="radio" name="attr_pokemon_slot_2_state" title="@{pokemon_slot_2_state}" class="pokeball-state-locked" value="0"/>
+                            <input type="radio" name="attr_pokemon_slot_2_state" title="@{pokemon_slot_2_state}" class="pokeball-state-closed" value="1"/>
+                            <input type="radio" name="attr_pokemon_slot_2_state" title="@{pokemon_slot_2_state}" class="pokeball-state-opened" value="2"/>
                             
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-closed.png" title="Closed" class="pokeball-state-closed"/>
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-opened.png" title="Opened" class="pokeball-state-opened"/>
@@ -258,9 +266,9 @@
                         <span class="party-pokeball">
                             <input type="hidden" class="pokeball-state" name="attr_pokemon_slot_3_state" value="0" />
                             
-                            <input type="radio" name="attr_pokemon_slot_3_state" class="pokeball-state-locked" value="0"/>
-                            <input type="radio" name="attr_pokemon_slot_3_state" class="pokeball-state-closed" value="1"/>
-                            <input type="radio" name="attr_pokemon_slot_3_state" class="pokeball-state-opened" value="2"/>
+                            <input type="radio" name="attr_pokemon_slot_3_state" title="@{pokemon_slot_3_state}" class="pokeball-state-locked" value="0"/>
+                            <input type="radio" name="attr_pokemon_slot_3_state" title="@{pokemon_slot_3_state}" class="pokeball-state-closed" value="1"/>
+                            <input type="radio" name="attr_pokemon_slot_3_state" title="@{pokemon_slot_3_state}" class="pokeball-state-opened" value="2"/>
                             
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-closed.png" title="Closed" class="pokeball-state-closed"/>
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-opened.png" title="Opened" class="pokeball-state-opened"/>
@@ -272,9 +280,9 @@
                         <span class="party-pokeball">
                             <input type="hidden" class="pokeball-state" name="attr_pokemon_slot_4_state" value="0" />
                             
-                            <input type="radio" name="attr_pokemon_slot_4_state" class="pokeball-state-locked" value="0"/>
-                            <input type="radio" name="attr_pokemon_slot_4_state" class="pokeball-state-closed" value="1"/>
-                            <input type="radio" name="attr_pokemon_slot_4_state" class="pokeball-state-opened" value="2"/>
+                            <input type="radio" name="attr_pokemon_slot_4_state" title="@{pokemon_slot_4_state}" class="pokeball-state-locked" value="0"/>
+                            <input type="radio" name="attr_pokemon_slot_4_state" title="@{pokemon_slot_4_state}" class="pokeball-state-closed" value="1"/>
+                            <input type="radio" name="attr_pokemon_slot_4_state" title="@{pokemon_slot_4_state}" class="pokeball-state-opened" value="2"/>
                             
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-closed.png" title="Closed" class="pokeball-state-closed"/>
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-opened.png" title="Opened" class="pokeball-state-opened"/>
@@ -288,9 +296,9 @@
                         <span class="party-pokeball">
                             <input type="hidden" class="pokeball-state" name="attr_pokemon_slot_5_state" value="0" />
                             
-                            <input type="radio" name="attr_pokemon_slot_5_state" class="pokeball-state-locked" value="0"/>
-                            <input type="radio" name="attr_pokemon_slot_5_state" class="pokeball-state-closed" value="1"/>
-                            <input type="radio" name="attr_pokemon_slot_5_state" class="pokeball-state-opened" value="2"/>
+                            <input type="radio" name="attr_pokemon_slot_5_state" title="@{pokemon_slot_5_state}" class="pokeball-state-locked" value="0"/>
+                            <input type="radio" name="attr_pokemon_slot_5_state" title="@{pokemon_slot_5_state}" class="pokeball-state-closed" value="1"/>
+                            <input type="radio" name="attr_pokemon_slot_5_state" title="@{pokemon_slot_5_state}" class="pokeball-state-opened" value="2"/>
                             
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-closed.png" title="Closed" class="pokeball-state-closed"/>
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-opened.png" title="Opened" class="pokeball-state-opened"/>
@@ -302,9 +310,9 @@
                         <span class="party-pokeball">
                             <input type="hidden" class="pokeball-state" name="attr_pokemon_slot_6_state" value="0" />
                             
-                            <input type="radio" name="attr_pokemon_slot_6_state" class="pokeball-state-locked" value="0"/>
-                            <input type="radio" name="attr_pokemon_slot_6_state" class="pokeball-state-closed" value="1"/>
-                            <input type="radio" name="attr_pokemon_slot_6_state" class="pokeball-state-opened" value="2"/>
+                            <input type="radio" name="attr_pokemon_slot_6_state" title="@{pokemon_slot_6_state}" class="pokeball-state-locked" value="0"/>
+                            <input type="radio" name="attr_pokemon_slot_6_state" title="@{pokemon_slot_6_state}" class="pokeball-state-closed" value="1"/>
+                            <input type="radio" name="attr_pokemon_slot_6_state" title="@{pokemon_slot_6_state}" class="pokeball-state-opened" value="2"/>
                             
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-closed.png" title="Closed" class="pokeball-state-closed"/>
                             <img src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/pokeball-state-opened.png" title="Opened" class="pokeball-state-opened"/>
@@ -325,15 +333,15 @@
     ----------------------------------------------------->
     <div class="section resistance pokemon-only">
             <div class="field-labeled" style="width:100%;margin-bottom:2px;">
-                <input type="text" name="attr_weakness" placeholder="None" />
+                <input type="text" name="attr_weakness" title="@{weakness}" placeholder="None" />
                 <span>Weakness +1/+2</span>
             </div>
             <div class="field-labeled" style="width:100%;margin-bottom:2px;">
-                <input type="text" name="attr_resistance" placeholder="None"/>
+                <input type="text" name="attr_resistance" title="@{resistance}" placeholder="None"/>
                 <span>Resistance -1/-2</span>
             </div>
             <div class="field-labeled" style="width:100%;margin-bottom:2px;">
-                <input type="text" name="attr_immunity"  placeholder="None" />
+                <input type="text" name="attr_immunity" title="@{immunity}" placeholder="None" />
                 <span>Immunity</span>
             </div>
     </div>
@@ -352,22 +360,22 @@
                         
                         <label>Strength</label>
                         <span class="field-labeled">
-                            <input type="number" name="attr_strength" min="1" value="1" max="10" />
+                            <input type="number" name="attr_strength" title="@{strength}" min="1" value="1" max="10" />
                             <span title="">Score</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_strength_max" min="1" value="10" max="10" />
+                            <input type="number" name="attr_strength_max" title="@{strength_max}" min="1" value="10" max="10" />
                             <span title="">Limit</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_strength_bonus"  value="0"  />
+                            <input type="number" name="attr_strength_bonus" title="@{strength_bonus}"  value="0"  />
                             <span title="">Bonus</span>
                         </span>
                         
                     </div>
                     <div class="contest" style="background-color:#f6e584">
                         <label>Tough</label>
-                        <input type="number" name="attr_tough" min="1" value="1" max="5" />
+                        <input type="number" name="attr_tough" title="@{tough}" min="1" value="1" max="5" />
                     </div>
                 </div>
                 <div class="attribute-row">
@@ -375,22 +383,22 @@
                         
                         <label>Dexterity</label>
                         <span class="field-labeled">
-                            <input type="number" name="attr_dexterity" min="1" value="1" max="10" />
+                            <input type="number" name="attr_dexterity" title="@{dexterity}" min="1" value="1" max="10" />
                             <span title="">Score</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_dexterity_max" min="1" value="10" max="10" />
+                            <input type="number" name="attr_dexterity_max" title="@{dexterity_max}" min="1" value="10" max="10" />
                             <span title="">Limit</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_dexterity_bonus" min="-5" value="0" max="5" />
+                            <input type="number" name="attr_dexterity_bonus" title="@{dexterity_bonus}" min="-5" value="0" max="5" />
                             <span title="">Bonus</span>
                         </span>
                         
                     </div>
                     <div class="contest" style="background-color:#f4a678">
                         <label>Cool</label>
-                        <input type="number" name="attr_cool" min="1" value="1" max="5" />
+                        <input type="number" name="attr_cool" title="@{cool}" min="1" value="1" max="5" />
                     </div>
                 </div>
                 <div class="attribute-row">
@@ -398,22 +406,22 @@
                         
                         <label>Vitality</label>
                         <span class="field-labeled">
-                            <input type="number" name="attr_vitality" min="1" value="1" max="10" />
+                            <input type="number" name="attr_vitality" title="@{vitality}" min="1" value="1" max="10" />
                             <span title="">Score</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_vitality_max" min="1" value="10" max="10" />
+                            <input type="number" name="attr_vitality_max" title="@{vitality_max}" min="1" value="10" max="10" />
                             <span title="">Limit</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_vitality_bonus" min="-3" value="0" max="3" />
+                            <input type="number" name="attr_vitality_bonus" title="@{vitality_bonus}" min="-3" value="0" max="3" />
                             <span title="">Bonus</span>
                         </span>
                         
                     </div>
                     <div class="contest" style="background-color:#abb4ad">
                         <label>Beauty</label>
-                        <input type="number" name="attr_beauty" min="1" value="1" max="5" />
+                        <input type="number" name="attr_beauty" title="@{beauty}" min="1" value="1" max="5" />
                     </div>
                 </div>
                 <div class="attribute-row pokemon-only">
@@ -421,22 +429,22 @@
                         
                         <label>Special</label>
                         <span class="field-labeled">
-                            <input type="number" name="attr_special" min="1" value="1" max="10" />
+                            <input type="number" name="attr_special" title="@{special}" min="1" value="1" max="10" />
                             <span title="">Score</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_special_max" min="1" value="10" max="10" />
+                            <input type="number" name="attr_special_max" title="@{special_max}" min="1" value="10" max="10" />
                             <span title="">Limit</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_special_bonus" min="-3" value="0" max="3" />
+                            <input type="number" name="attr_special_bonus" title="@{special_bonus}" min="-3" value="0" max="3" />
                             <span title="">Bonus</span>
                         </span>
                         
                     </div>
                     <div class="contest" style="background-color:#e6aba0;">
                         <label>Cute</label>
-                        <input type="number" name="attr_cute" min="1" value="1" max="5" />
+                        <input type="number" name="attr_cute" title="@{cute}" min="1" value="1" max="5" />
                     </div>
                 </div>
                 <div class="attribute-row">
@@ -444,22 +452,22 @@
                         
                         <label>Insight</label>
                         <span class="field-labeled">
-                            <input type="number" name="attr_insight" min="1" value="1" max="10" />
+                            <input type="number" name="attr_insight" title="@{insight}" min="1" value="1" max="10" />
                             <span title="">Score</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_insight_max" min="1" value="10" max="10" />
+                            <input type="number" name="attr_insight_max" title="@{insight_max}" min="1" value="10" max="10" />
                             <span title="">Limit</span>
                         </span>
                         <span class="field-labeled">
-                            <input type="number" name="attr_insight_bonus" min="-3" value="0" max="3" />
+                            <input type="number" name="attr_insight_bonus" title="@{insight_bonus}" min="-3" value="0" max="3" />
                             <span title="">Bonus</span>
                         </span>
                         
                     </div>
                     <div class="contest" style="background-color:#b0c37c">
                         <label>Smart</label>
-                        <input type="number" name="attr_smart" min="1" value="1" max="5" />
+                        <input type="number" name="attr_smart" title="@{smart}" min="1" value="1" max="5" />
                     </div>
                 </div>
                 
@@ -471,16 +479,16 @@
                 <div class="hp-will">
                     <strong style="display:inline-block;width:40px;">HP</strong>
                     <span class="field-labeled" >
-                        <input type="number" name="attr_hp" min="0" value="0" />
+                        <input type="number" name="attr_hp" title="@{hp}" min="0" value="0" />
                         <span title="">current</span>
                     </span>
                     <strong>/</strong>
                     <span class="field-labeled">
-                        <input type="number" name="attr_hp_max" value="@{vitality_calc} + @{hp_base}" disabled="true"/>
+                        <input type="number" name="attr_hp_max" title="@{hp_max}" value="@{vitality_calc} + @{hp_base}" disabled="true"/>
                         <span title="">Max</span>
                     </span>
                     <span class="field-labeled">
-                        <input type="number" name="attr_hp_base" min="0" value="0" />
+                        <input type="number" name="attr_hp_base" title="@{hp_base}" min="0" value="0" />
                         <span title="">Base</span>
                     </span>
                     
@@ -488,12 +496,12 @@
                 <div class="hp-will">
                     <strong style="display:inline-block;width:40px;">Will</strong>
                     <span class="field-labeled" >
-                        <input type="number" name="attr_will" min="0" value="3" max="10" />
+                        <input type="number" name="attr_will" title="@{will}" min="0" value="3" max="10" />
                         <span title="">current</span>
                     </span>
                     <strong>/</strong>
                     <span class="field-labeled">
-                        <input type="number" name="attr_will_max" min="0" value="3" max="10"/>
+                        <input type="number" name="attr_will_max" title="@{will_max}" min="0" value="3" max="10"/>
                         <span title="">Max</span>
                     </span>
                     
@@ -501,27 +509,27 @@
                 </div>
                 <div class="conditions">
                     <div class="conditions-row">
-                        <input type="hidden" name="attr_is_burned" class="sheet-collapse-input" value="0"/>
+                        <input type="hidden" name="attr_is_burned"  class="sheet-collapse-input" value="0"/>
                         
                         <strong style="display:inline-block;width:70px">Burn</strong>
-                        <input type="checkbox" name="attr_is_burned" value="1" />
+                        <input type="checkbox" name="attr_is_burned" title="@{is_burned}" value="1" />
                         
                         <span class="condition-collapse">
                             <span >
                                 <label>I  <input type="radio" value="2" name="attr_burn_stage" title="Burn 1" checked="true"/></label>
                             </span>
                             <span>
-                                <label>II <input type="radio" value="4" name="attr_burn_stage" title="Burn 1" /></label>
+                                <label>II <input type="radio" value="4" name="attr_burn_stage" title="Burn 2" /></label>
                             </span>
                             <span>
-                                <label>III<input type="radio" value="6" name="attr_burn_stage" title="Burn 1" /></label>
+                                <label>III<input type="radio" value="6" name="attr_burn_stage" title="Burn 3" /></label>
                             </span>
                         </span>
                     </div>
                     <div class="conditions-row">
                         <input type="hidden" name="attr_is_poisoned" class="sheet-collapse-input" value="0" />
                         <strong style="display:inline-block;width:70px">Poison</strong>
-                        <input type="checkbox" name="attr_is_poisoned" value="1" />
+                        <input type="checkbox" name="attr_is_poisoned" title="@{is_poisoned}" value="1" />
                         <span class="condition-collapse">
                             <span>
                                 <label>Poisoned  <input type="radio" value="1" name="attr_poison_stage" title="Poisoned" checked="true"/></label>
@@ -533,31 +541,31 @@
                     </div>
                     <div class="conditions-row">
                         <strong style="display:inline-block;width:70px">Paralyzed</strong>
-                        <input type="checkbox" name="attr_is_paralysed" />
+                        <input type="checkbox" name="attr_is_paralysed" title="@{is_paralysed}" />
                     </div>
                     <div class="conditions-row">
                         <strong style="display:inline-block;width:70px">Asleep</strong>
-                        <input type="checkbox" name="attr_is_asleep" />
+                        <input type="checkbox" name="attr_is_asleep" title="@{is_asleep}" />
                     </div>
                     <div class="conditions-row">
                         <strong style="display:inline-block;width:70px">Confused</strong>
-                        <input type="checkbox" name="attr_is_confused" />
+                        <input type="checkbox" name="attr_is_confused" title="@{is_confused}" />
                     </div>
                     <div class="conditions-row">
                         <strong style="display:inline-block;width:70px">Disable</strong>
-                        <input type="checkbox" name="attr_is_disabled" />
+                        <input type="checkbox" name="attr_is_disabled" title="@{is_disabled}" />
                     </div>
                     <div class="conditions-row">
                         <strong style="display:inline-block;width:70px">Frozen</strong>
-                        <input type="checkbox" name="attr_is_frozen"  />
+                        <input type="checkbox" name="attr_is_frozen" title="@{is_frozen}" />
                     </div>
                     <div class="conditions-row">
                         <strong style="display:inline-block;width:70px">Flinched</strong>
-                        <input type="checkbox" name="attr_is_flinched" />
+                        <input type="checkbox" name="attr_is_flinched" title="@{is_flinched}" />
                     </div>
                     <div class="conditions-row">
                         <strong style="display:inline-block;width:70px">In Love</strong>
-                        <input type="checkbox" name="attr_is_inLove" />
+                        <input type="checkbox" name="attr_is_inLove" title="@{is_inLove}" />
                     </div>
                 </div>
                 
@@ -578,15 +586,15 @@
                         </span>
                         <span style="display:inline-block;width:110px">
                             <button type="roll" name="roll_initiative" 
-                            value="&{template:default}{{name=@{character_name}'s Initiative }}{{initiative=[[1d6 + (@{initiative_calc}) &{tracker}]] }}">Initiative</button>
+                            value="@{whisper} &{template:default}{{name=@{character_name}'s Initiative }}{{initiative=[[1d6 + (@{initiative_calc}) &{tracker}]] }}">Initiative</button>
                         </span>
                         <span style="display:inline-block;width:120px">
                             <span class="field-labeled" style="display:inline-block;width:60px">
-                                <input type="number" name="attr_initiative_mod" value="0"  />
+                                <input type="number" name="attr_initiative_mod" title="@{initiative_mod}" value="0"  />
                                 <span title="">Mod</span>
                             </span>
                             <span class="field-labeled"  style="display:inline-block;width:50px">
-                                <input type="number" name="attr_initiative_calc" value="(@{dexterity_calc})+@{survival}+@{alert}+@{initiative_mod}" disabled="true" />
+                                <input type="number" name="attr_initiative_calc" title="@{initiative_calc}" value="(@{dexterity_calc})+@{survival}+@{alert}+@{initiative_mod}" disabled="true" />
                                 <span title="">Value</span>
                             </span>
                         </span>
@@ -596,7 +604,7 @@
                     <div>
                         <span style="display:inline-block;width:180px">
                             <strong>Dexterity + Fight + </strong>
-                            <select name="attr_accuracy_attribute" value="@{brawl}" style="width:auto">
+                            <select name="attr_accuracy_attribute" value="@{brawl}" title="@{accuracy_attribute}" style="width:auto">
                                 <option value="@{brawl}">Brawl</option>
                                 <option value="@{channel}">Channel</option>
                                 <option value="@{throw}">Throw</option>
@@ -606,18 +614,18 @@
                         
                         <span style="display:inline-block;width:110px">
                             <button type="roll" name="roll_accuracy" 
-                            value="&{template:default}{{name=@{character_name}'s Accuracy}}{{pool=[[@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod}]] }}{{successes=[[(@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod})d6>4s]] }}">Accuracy</button>
+                            value="@{whisper} &{template:default}{{name=@{character_name}'s Accuracy}}{{pool=[[@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod}]] }}{{successes=[[(@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod})d6>4s]] }}">Accuracy</button>
                         </span>
                         
                         <span style="display:inline-block;width:120px">
                             <!--input type="hidden" name="attr_accuracy_calc" value="@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod}" /-->
                             
                             <span class="field-labeled" style="display:inline-block;width:60px">
-                                <input type="number" name="attr_accuracy_mod" value="0"  />
+                                <input type="number" name="attr_accuracy_mod" title="@{accuracy_mod}" value="0"  />
                                 <span title="">Mod</span>
                             </span>
                             <span class="field-labeled"  style="display:inline-block;width:50px">
-                                <input type="number" name="attr_accuracy_calc" value="@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod}" disabled="true" />
+                                <input type="number" name="attr_accuracy_calc" title="@{accuracy_calc}" value="@{dexterity_calc} + @{fight} + @{accuracy_attribute} + @{accuracy_mod}" disabled="true" />
                                 <span>Value</span>
                             </span>
                         </span>
@@ -631,16 +639,16 @@
                         
                         <span style="display:inline-block;width:110px">
                            <button type="roll" name="roll_evade"
-                        value="&{template:default}{{name=@{character_name}'s Evade}}{{pool=[[(@{dexterity_calc}) + @{fight} + @{evasion}]] }}{{successes=[[(@{dexterity_calc} + @{fight} + @{evasion})d6>4s]] }}">Evade</button>
+                        value="@{whisper} &{template:default}{{name=@{character_name}'s Evade}}{{pool=[[(@{dexterity_calc}) + @{fight} + @{evasion}]] }}{{successes=[[(@{dexterity_calc} + @{fight} + @{evasion})d6>4s]] }}">Evade</button>
                         </span>
                         
                         <span style="display:inline-block;width:120px">
                             <span class="field-labeled" style="display:inline-block;width:60px">
-                                <input type="number" name="attr_evade_mod" value="0"  />
+                                <input type="number" name="attr_evade_mod" title="@{evade_mod}" value="0"  />
                                 <span title="">Mod</span>
                             </span>
                             <span class="field-labeled"  style="display:inline-block;width:50px">
-                                <input type="number" name="attr_evade_calc" value="(@{dexterity_calc}) + @{fight} + @{evasion} + @{evade_mod}" disabled="true"/>
+                                <input type="number" name="attr_evade_calc" title="@{evade_calc}" value="(@{dexterity_calc}) + @{fight} + @{evasion} + @{evade_mod}" disabled="true"/>
                                 <span title="">Value</span>
                             </span>
                         </span>
@@ -649,7 +657,7 @@
                     <!-- Clash -->
                     <div>
                         <span style="display:inline-block;width:180px">
-                            <select name="attr_clash_attribute" value="@{strength_calc}" style="width:auto" >
+                            <select name="attr_clash_attribute" value="@{strength_calc}" title="@{clash_attribute}" style="width:auto" >
                                 <option value="@{strength_calc}">Strength</option>
                                 <option value="@{special_calc}">Special</option>
                             </select>
@@ -658,16 +666,16 @@
                         
                         <span style="display:inline-block;width:110px">
                            <button type="roll" name="roll_clash"
-                        value="&{template:default}{{name=@{character_name}'s Clash}}{{pool=[[(@{clash_attribute})+@{clash}+@{fight}]] }}{{successes=[[(@{clash_attribute}+@{clash}+@{fight})d6>4s]] }}">Clash</button>
+                        value="@{whisper} &{template:default}{{name=@{character_name}'s Clash}}{{pool=[[(@{clash_attribute})+@{clash}+@{fight}]] }}{{successes=[[(@{clash_attribute}+@{clash}+@{fight})d6>4s]] }}">Clash</button>
                         </span>
                         
                         <span style="display:inline-block;width:120px">
                             <span class="field-labeled " style="display:inline-block;width:60px">
-                                <input type="number" name="attr_clash_mod" value="0"  />
+                                <input type="number" name="attr_clash_mod" title="@{clash_mod}" value="0"  />
                                 <span title="">Mod</span>
                             </span>
                             <span class="field-labeled sheet-field-readonly"  style="display:inline-block;width:50px">
-                                <input type="number" name="attr_clash_calc" value="@{clash_attribute}+@{fight}+@{clash}" disabled="true"/>
+                                <input type="number" name="attr_clash_calc" title="@{clash_calc}" value="@{clash_attribute}+@{fight}+@{clash}" disabled="true"/>
                                 <span title="">Value</span>
                             </span>
                         </span>
@@ -678,7 +686,7 @@
                     <!-- Generic Rolls -->
                     <div class="generic-roll">
                         <span class="field-labeled" style="width:100px">
-                            <select name="attr_generic_attribute">
+                            <select name="attr_generic_attribute" title="@{generic_attribute}">
                                 <option value="@{strength_calc}">Strength</option>
                                 <option value="@{dexterity_calc}">Dexterity</option>
                                 <option value="@{vitality_calc}">Vitality</option>
@@ -695,7 +703,7 @@
                         </span>
                         <strong>+</strong>
                         <span class="field-labeled" style="width:100px">
-                            <select name="attr_generic_skill">
+                            <select name="attr_generic_skill" title="@{generic_skill}">
                                 <option value="@{fight}">Fight</option>
                                 <option value="@{survival}">Survival</option>
                                 <option value="@{contest}">Contest</option>
@@ -705,7 +713,7 @@
                         </span>
                         <strong>+</strong>
                         <span class="field-labeled" style="width:100px">
-                            <select name="attr_generic_specialty">
+                            <select name="attr_generic_specialty" title="@{generic_specialty}">
                                 <optgroup label="Fight">              
                                     <option value="@{brawl}">Brawl</option>
                                     <option value="@{channel}">Channel</option>
@@ -738,7 +746,7 @@
                         </span>
                         
                         <button type="roll" name="roll_generic" 
-                        value="&{template:default}{{name=@{character_name}'s Roll }}{{pool=[[@{move_generic_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_generic_calc} + (?{Modifier|0}) )d6>4s]] }}">Roll</button>
+                        value="@{whisper} &{template:default}{{name=@{character_name}'s Roll }}{{pool=[[@{move_generic_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_generic_calc} + (?{Modifier|0}) )d6>4s]] }}">Roll</button>
                     </div>
                     
                 </div>
@@ -749,12 +757,12 @@
                     <div >
                         <strong>Vitality + </strong>
                         <span class="field-labeled" style="display:inline-block;width:100px;text-align:center">
-                            <input type="number" name="attr_defense_mod"  value="0" />
+                            <input type="number" name="attr_defense_mod" title="@{defense_mod}"  value="0" />
                             <span title="">Defense Mod</span>
                         </span>
                         <strong>→</strong>
                         <span class="field-labeled sheet-field-readonly" style="display:inline-block;width:70px;text-align:center">
-                            <input type="number" name="attr_defense_calc" value="@{vitality_calc}+@{defense_mod}" disabled="true"/>
+                            <input type="number" name="attr_defense_calc" title="@{defense_calc}" value="@{vitality_calc}+@{defense_mod}" disabled="true"/>
                             <span title="">Defense</span>
                         </span>
                         
@@ -763,18 +771,18 @@
                     <div>
                         <strong>Vitality + </strong>
                         <span class="field-labeled" style="display:inline-block;width:100px;text-align:center">
-                            <input type="number" name="attr_spdefense_mod"  value="0"  />
+                            <input type="number" name="attr_spdefense_mod" title="@{spdefense_mod}"  value="0"  />
                             <span title="">Sp.Defense Mod</span>
                         </span>
                         <strong>→</strong>
                         <span class="field-labeled sheet-field-readonly" style="display:inline-block;width:70px;text-align:center">
-                            <input type="number" name="attr_spdefense_calc" value="@{vitality_calc}+@{spdefense_mod}" disabled="true"/>
+                            <input type="number" name="attr_spdefense_calc" title="@{spdefense_calc}" value="@{vitality_calc}+@{spdefense_mod}" disabled="true"/>
                             <span title="">Sp.Defense</span>
                         </span>
                     </div>
                     
                     <button type="roll" style="display: block; width: auto ; margin: 0 auto;padding: 3px 20px;"
-                    value="&{template:default}{{name=@{character_name}'s Luck Dice}}{{success=[[1d6>6s]]}}">Luck Dice</button>
+                    value="@{whisper} &{template:default}{{name=@{character_name}'s Luck Dice}}{{success=[[1d6>6s]]}}">Luck Dice</button>
                     
                 </div>
 
@@ -790,7 +798,7 @@
         <span class="PMD-swap-wrapper">
             <input type="hidden" name="attr_PMD_mode" class="PMD-toggle" value="0" />
             
-            <input type="checkbox" name="attr_PMD_mode" value="1" title="Core or PMD" />
+            <input type="checkbox" name="attr_PMD_mode"  value="1" title="Core or PMD" />
             <img class="PMD-only" src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/PMD-Badge-Icon.png" />
             <img class="Core-only" src="https://raw.githubusercontent.com/ChevronAllen/Pokerole/master/Pokeball-Min-Icon.png" />
         </span>
@@ -802,19 +810,19 @@
                 <div style="display:inline-block;">
                     <label style="display:block;text-align:center">Happiness</label>
                     <span class="field-labeled" style="display:block;width:100px;margin:0 auto;text-align:center">
-                        <input type="number" name="attr_happiness" min="0" value="2" max="5" />
+                        <input type="number" name="attr_happiness" title="@{happiness}" min="0" value="2" max="5" />
                     </span>
                 </div>
                 <div style="display:inline-block;">
                     <label style="display:block;text-align:center">Loyalty</label>
                     <span class="field-labeled" style="display:block;width:100px;margin:0 auto;text-align:center">
-                        <input type="number" name="attr_loyalty" min="0" value="2" max="5" />
+                        <input type="number" name="attr_loyalty" title="@{loyalty}" min="0" value="2" max="5" />
                     </span>
                 </div>
                 <div style="display:inline-block;">
                     <label style="display:block;text-align:center">Disobedience</label>
                     <span class="field-labeled" style="display:block;width:100px;margin:0 auto;text-align:center">
-                        <input type="number" name="attr_disobedience" min="0" value="2" max="5" />
+                        <input type="number" name="attr_disobedience" title="@{disobedience}" min="0" value="2" max="5" />
                     </span>
                 </div>
             </div>
@@ -823,19 +831,19 @@
                 <div style="display:inline-block;">
                     <label style="display:block;text-align:center">Logic</label>
                     <span class="field-labeled" style="display:block;width:100px;margin:0 auto;text-align:center">
-                        <input type="number" name="attr_logic" min="0" value="2" max="5" />
+                        <input type="number" name="attr_logic" title="@{logic}" min="0" value="2" max="5" />
                     </span>
                 </div>
                 <div style="display:inline-block;">
                     <label style="display:block;text-align:center">Instinct</label>
                     <span class="field-labeled" style="display:block;width:100px;margin:0 auto;text-align:center">
-                        <input type="number" name="attr_instinct" min="0" value="2" max="5" />
+                        <input type="number" name="attr_instinct" title="@{instinct}" min="0" value="2" max="5" />
                     </span>
                 </div>
                 <div style="display:inline-block;">
                     <label style="display:block;text-align:center">Primal</label>
                     <span class="field-labeled" style="display:block;width:100px;margin:0 auto;text-align:center">
-                        <input type="number" name="attr_primal" min="0" value="2" max="5" />
+                        <input type="number" name="attr_primal" title="@{primal}" min="0" value="2" max="5" />
                     </span>
                 </div>
             </div>
@@ -853,25 +861,25 @@
             <div class="skills-col">
                 <label >Fight</label>
                 <span class="field-labeled">
-                    <input type="number" name="attr_fight" min="0" value="0" max="5" />
+                    <input type="number" name="attr_fight" title="@{fight}" min="0" value="0" max="5" />
                 </span>
             </div>
             <div class="skills-col">
                 <label >Survival</label>
                 <span class="field-labeled">
-                    <input type="number" name="attr_survival" min="0" value="0" max="5" />
+                    <input type="number" name="attr_survival" title="@{survival}" min="0" value="0" max="5" />
                 </span>
             </div>
             <div class="skills-col">
                 <label >Contest</label>
                 <span class="field-labeled" >
-                    <input type="number" name="attr_contest" min="0" value="0" max="5" />
+                    <input type="number" name="attr_contest" title="@{contest}" min="0" value="0" max="5" />
                 </span>
             </div>
             <div class="skills-col trainer-only">
                 <label >Knowledge</label>
                 <span class="field-labeled">
-                    <input type="number" name="attr_knowledge" min="0" value="0" max="5" />
+                    <input type="number" name="attr_knowledge" title="@{evade_calc_knowledge}" min="0" value="0" max="5" />
                 </span>
             </div>
         </div>
@@ -882,109 +890,109 @@
             <div class="skills-col pokemon-only">
                 <div>
                     <strong>Brawl</strong>
-                    <input type="number" name="attr_brawl" min="0" value="0" max="5" />
+                    <input type="number" name="attr_brawl" title="@{brawl}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Channel</strong>
-                    <input type="number" name="attr_channel" min="0" value="0" max="5" />
+                    <input type="number" name="attr_channel" title="@{channel}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Evasion</strong>
-                    <input type="number" name="attr_evasion" min="0" value="0" max="5" />
+                    <input type="number" name="attr_evasion" title="@{evasion}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Clash</strong>
-                    <input type="number" name="attr_clash" min="0" value="0" max="5" />
+                    <input type="number" name="attr_clash" title="@{clash}" min="0" value="0" max="5" />
                 </div>
             </div>
             <div class="skills-col trainer-only">
                 <div>
                     <strong>Brawl</strong>
-                    <input type="number" name="attr_brawl" min="0" value="0" max="5" />
+                    <input type="number" name="attr_brawl" title="@{brawl}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Throw</strong>
-                    <input type="number" name="attr_throw" min="0" value="0" max="5" />
+                    <input type="number" name="attr_throw" title="@{throw}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Evasion</strong>
-                    <input type="number" name="attr_evasion" min="0" value="0" max="5" />
+                    <input type="number" name="attr_evasion" title="@{evasion}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Weapons</strong>
-                    <input type="number" name="attr_weapons" min="0" value="0" max="5" />
+                    <input type="number" name="attr_weapons" title="@{weapons}" min="0" value="0" max="5" />
                 </div>
             </div>
             <div class="skills-col">
                 <div>
                     <strong>Alert</strong>
-                    <input type="number" name="attr_alert" min="0" value="0" max="5" />
+                    <input type="number" name="attr_alert" title="@{alert}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Athletic</strong>
-                    <input type="number" name="attr_athletic" min="0" value="0" max="5" />
+                    <input type="number" name="attr_athletic" title="@{athletic}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Nature</strong>
-                    <input type="number" name="attr_nature" min="0" value="0" max="5" />
+                    <input type="number" name="attr_nature" title="@{nature}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Stealth</strong>
-                    <input type="number" name="attr_stealth" min="0" value="0" max="5" />
+                    <input type="number" name="attr_stealth" title="@{stealth}" min="0" value="0" max="5" />
                 </div>
             </div>
             <div class="skills-col trainer-only">
                 <div>
                     <strong>Empath</strong>
-                    <input type="number" name="attr_empath" min="0" value="0" max="5" />
+                    <input type="number" name="attr_empath" title="@{empath}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Etiquette</strong>
-                    <input type="number" name="attr_etiquette" min="0" value="0" max="5" />
+                    <input type="number" name="attr_etiquette" title="@{etiquette}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Intimidate</strong>
-                    <input type="number" name="attr_intimidate" min="0" value="0" max="5" />
+                    <input type="number" name="attr_intimidate" title="@{intimidate}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Perform</strong>
-                    <input type="number" name="attr_perform" min="0" value="0" max="5" />
+                    <input type="number" name="attr_perform" title="@{perform}" min="0" value="0" max="5" />
                 </div>
             </div>
             <div class="skills-col pokemon-only">
                 <div>
                     <strong>Allure</strong>
-                    <input type="number" name="attr_allure" min="0" value="0" max="5" />
+                    <input type="number" name="attr_allure" title="@{allure}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Etiquette</strong>
-                    <input type="number" name="attr_etiquette" min="0" value="0" max="5" />
+                    <input type="number" name="attr_etiquette" title="@{etiquette}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Intimidate</strong>
-                    <input type="number" name="attr_intimidate" min="0" value="0" max="5" />
+                    <input type="number" name="attr_intimidate" title="@{intimidate}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Perform</strong>
-                    <input type="number" name="attr_perform" min="0" value="0" max="5" />
+                    <input type="number" name="attr_perform" title="@{perform}" min="0" value="0" max="5" />
                 </div>
             </div>
             <div class="skills-col trainer-only">
                 <div>
                     <strong>Crafts</strong>
-                    <input type="number" name="attr_crafts" min="0" value="0" max="5" />
+                    <input type="number" name="attr_crafts" title="@{crafts}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Lore</strong>
-                    <input type="number" name="attr_lore" min="0" value="0" max="5" />
+                    <input type="number" name="attr_lore"  title="@{lore}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Medicine</strong>
-                    <input type="number" name="attr_medicine" min="0" value="0" max="5" />
+                    <input type="number" name="attr_medicine" title="@{medicine}" min="0" value="0" max="5" />
                 </div>
                 <div>
                     <strong>Science</strong>
-                    <input type="number" name="attr_science" min="0" value="0" max="5" />
+                    <input type="number" name="attr_science" title="@{science}" min="0" value="0" max="5" />
                 </div>
             </div>
         </div>
@@ -1005,15 +1013,15 @@
                         <label style="display: inline-block ; width: 80px;text-align:center">Potion</label>
                         <strong>x</strong>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_potion_count" min="0" value="0"  />
+                            <input type="number" name="attr_potion_count" title="@{potion_count}" min="0" value="0"  />
                             <span>Count</span>
                         </span>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_potion_use" min="0" value="0" max="2" />
+                            <input type="number" name="attr_potion_use" title="@{potion_use}" min="0" value="0" max="2" />
                             <span>Used</span>
                         </span>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_potion_use_max" value="2" disabled="true"    />
+                            <input type="number" name="attr_potion_use_max" title="@{potion_use_max}" value="2" disabled="true"    />
                             <span>Uses Max</span>
                         </span>
                     </div>
@@ -1021,15 +1029,15 @@
                         <label style="display: inline-block ; width: 80px;text-align:center">Super Potion</label>
                         <strong>x</strong>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_superPotion_count" min="0" value="0" />
+                            <input type="number" name="attr_superPotion_count" title="@{superPotion_count}" min="0" value="0" />
                             <span>Count</span>
                         </span>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_superPotion_use" min="0" value="0" max="4" />
+                            <input type="number" name="attr_superPotion_use" title="@{superPotion_use}" min="0" value="0" max="4" />
                             <span>Used</span>
                         </span>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_superPotion_use_max"  value="4" disabled="true"  />
+                            <input type="number" name="attr_superPotion_use_max" title="@{superPotion_use_max}" value="4" disabled="true"  />
                             <span>Uses Max</span>
                         </span>
                     </div>
@@ -1037,15 +1045,15 @@
                         <label style="display: inline-block ; width: 80px;text-align:center">Hyper Potion</label>
                         <strong>x</strong>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_hyperPotion_count"  min="0" value="0"  />
+                            <input type="number" name="attr_hyperPotion_count" title="@{hyperPotion_count}" min="0" value="0"  />
                             <span>Count</span>
                         </span>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_hyperPotion_use" min="0" value="0" max="14" />
+                            <input type="number" name="attr_hyperPotion_use" title="@{hyperPotion_use}" min="0" value="0" max="14" />
                             <span>Used</span>
                         </span>
                         <span class="field-labeled" style="width:70px">
-                            <input type="number" name="attr_hyperPotion_use_max" value="14" disabled="true"  />
+                            <input type="number" name="attr_hyperPotion_use_max" title="@{hyperPotion_use_max}" value="14" disabled="true"  />
                             <span>Uses Max</span>
                         </span>
                     </div>
@@ -1054,21 +1062,21 @@
                     <label class="header">Gear</label>
                     <div>
                         <span class="field-labeled" style="display:block">
-                            <input type="text" name="attr_heldItem"  />
+                            <input type="text" name="attr_heldItem" title="@{heldItem}"  />
                             <span>Held Item</span>
                         </span>
                     </div>
                     <div>
                         <span class="field-labeled" style="display:block">
-                            <input type="text" name="attr_garment1"  />
+                            <input type="text" name="attr_garment1" title="@{garment1}" />
                             <span>Garment</span>
                         </span>
                         <span class="field-labeled" style="display:block">
-                            <input type="text" name="attr_garment2"  />
+                            <input type="text" name="attr_garment2" title="@{garment2}"  />
                             <span>Garment</span>
                         </span>
                         <span class="field-labeled" style="display:block">
-                            <input type="text" name="attr_garment3"  />
+                            <input type="text" name="attr_garment3"  title="@{garment3}" />
                             <span>Garment</span>
                         </span>
                     </div>
@@ -1106,7 +1114,7 @@
         </div>
         <div class="inventory-notes">
             <label class="header">Notes</label>
-            <textarea name="attr_notes"></textarea>
+            <textarea name="attr_notes" title="@{notes}"></textarea>
         </div>
     </div>
     
@@ -1367,7 +1375,7 @@
                                     <span>Pool</span>
                                 </span>
                                 <button type="roll" name="roll_move_accuracy" 
-                                value="&{template:default}{{name=@{character_name}'s @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_accuracy_calc} + (?{Modifier|0}) )d6>4s]] }}" ></button>
+                                value="@{whisper} &{template:default}{{name=@{character_name}'s @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_accuracy_calc} + (?{Modifier|0}) )d6>4s]] }}" ></button>
                             </div>
                             
                             <div style="display:inline-block;margin-right:5px">
@@ -1377,7 +1385,7 @@
                                     <span>Pool</span>
                                 </span>
                                 <button type="roll" name="roll_move_damage" 
-                                value="&{template:default}{{name=@{character_name}'s @{move_name} Damage }}{{type=@{move_type}}}{{pool=[[@{move_damage_calc} - ?{Defense/Sp.Defense?|0}]] }}{{successes=[[(@{move_damage_calc} - ?{Defense/Sp.Defense?|0})d6>4s]] }}" ></button>
+                                value="@{whisper} &{template:default}{{name=@{character_name}'s @{move_name} Damage }}{{type=@{move_type}}}{{pool=[[@{move_damage_calc} - ?{Defense/Sp.Defense?|0}]] }}{{successes=[[(@{move_damage_calc} - ?{Defense/Sp.Defense?|0})d6>4s]] }}" ></button>
                             </div>
                             
                             <div style="display:inline-block;margin-right:5px">
@@ -1392,7 +1400,7 @@
                                     <span>Chance</span>
                                 </span>
                                 <button type="roll" name="roll_move_effect" 
-                                value="&{template:default}{{name=@{character_name}'s @{move_name} Effect}}{{pool=[[@{move_effect_chance}]] }}{{successes=[[(@{move_effect_chance})d6>6s]] }}" ></button>
+                                value="@{whisper} &{template:default}{{name=@{character_name}'s @{move_name} Effect}}{{pool=[[@{move_effect_chance}]] }}{{successes=[[(@{move_effect_chance})d6>6s]] }}" ></button>
                                 
     
                             </div>
