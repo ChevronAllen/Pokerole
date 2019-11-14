@@ -16,6 +16,35 @@
     --smart:#b0c37c;
     
 }
+.sheet-toggle-header{
+    margin-bottom:20px;
+}
+.sheet-toggle{
+    display:inline-block;
+    position:relative;
+    
+}
+.sheet-toggle input{
+    position:absolute;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    opacity:0;
+}
+.sheet-toggle span{
+    display:block;
+    padding:2px 15px;
+    border:1px solid black;
+    border-radius:10px;
+    background:var(--section);
+    color:black;
+    font-weight:bold;
+}
+.sheet-toggle input:checked ~ span{
+    background-color:var(--blue);
+    color:black;
+}
 
 .repcontrol_add{}
 .repcontrol_edit{}
@@ -252,7 +281,7 @@ input, select, textarea{
 
 .sheet-party-pokeball > img{
     position:absolute;
-    top:-5px;
+    top:-6px;
     left:0px;
     width:30px !important;
     height:30px  !important;
@@ -542,9 +571,9 @@ input, select, textarea{
 }
 .sheet-inventory input.sheet-item-count{
     display:inline-block;
-    width:30px;
+    width: 40px;
     margin-right:5px;
-    border-radius:50%;
+    border-radius:15px;
     font-weight:bold;
 }
 

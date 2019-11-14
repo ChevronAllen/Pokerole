@@ -6,7 +6,7 @@
 	"patreon": "",
 	"tipeee": "",
 	"preview": "Pokerole.jpg",
-    "instructions": "",
+    "instructions": " Click on the symbol in the upper right of the sheet to swap between Trainer View and Pokemon View. Within the Pokemon view you can swap between core and PMD stats \nTesters: Gogfot",
     "useroptions": [
         {
             "attribute": "creature_mode",
@@ -17,7 +17,7 @@
                 "Pokemon|1"
             ],
             "default": "1",
-            "description": "Set the default view for new sheets.",
+            "description": "Set the default view for new sheets."
         },
         {
             "attribute": "PMD_mode",
@@ -25,7 +25,7 @@
             "type": "checkbox",
             "value": "1",
             "default": "0",
-            "description": "Set the default view for new sheets.",
+            "description": "Set the default mode for new pokemon sheets."
         }
     ]
 }
