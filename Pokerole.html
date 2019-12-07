@@ -15,6 +15,38 @@
     
 </script>
 
+<rolltemplate class="sheet-rolltemplate-PMD">
+    <div class="sheet-roll-container">
+        {{#name}}
+        <div class="sheet-roll-row">
+            {{#move}}{{#type}}{{#cat}}
+            <span class="sheet-roll-small sheet-roll-grey">{{type}} - {{cat}}</span>
+            {{/cat}}{{/type}}{{/move}}
+            
+            <span class="sheet-roll-name"> {{name}} </span>
+            
+            {{#skill1}}
+            <span class="sheet-roll-small sheet-roll-grey"> {{skill1}} {{#skill2}} + {{skill2}} {{#skill3}} + {{skill3}} {{/skill3}} {{/skill2}}</span>
+            {{/skill1}}
+        </div>
+        {{/name}}
+        
+        {{#roll}}
+        <div class="sheet-roll-row">
+            <span class="sheet-roll-value">{{roll}}</span>
+            <span class="sheet-roll-small">{{pool}} Dice</span>
+        </div>
+        {{/roll}}
+        
+        {{#description}}
+        <div class="sheet-roll-row">
+            <span>{{description}}</span>
+        </div>
+        {{/description}}
+        
+    </div>
+</rolltemplate>
+
 <input type="hidden" name="attr_sheet_version"  value="v1.3.0" />
 
 <input type="hidden" name="attr_strength_calc"  value="@{strength} + @{strength_bonus}" disabled="true"/>
@@ -173,7 +205,7 @@
                             <option>Gentle</option>
                             <option>Hardy</option>
                             <option>Hasty</option>
-                            <option>Impish</option>
+                            <option>Inmpish</option>
                             <option>Jolly</option>
                             <option>Lax</option>
                             <option>Lonely</option>
@@ -738,7 +770,7 @@
                                     <option value="@{throw}">Throw</option>
                                     <option value="@{weapons}">Weapons</option>
                                 </optgroup>
-                                <optgroup label="Survival">
+                                <optgroup label="Survive">
                                     <option value="@{alert}">Alert</option>
                                     <option value="@{athletic}">Athletic</option>
                                     <option value="@{nature}">Nature</option>
