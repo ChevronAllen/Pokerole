@@ -26,7 +26,6 @@
             {{/character}}
             
             
-            
             <span class="sheet-roll-name"> {{name}} </span>
             
             {{#skill1}}
@@ -35,12 +34,12 @@
         </div>
         {{/name}}
         
-        {{#roll}}
+        {{#rollGreater() pool 0}}
         <div class="sheet-roll-row">
             
-            {{#move}}{{#type}}{{#cat}}
-            <span class="sheet-roll-type">{{type}} | {{cat}}</span>
-            {{/cat}}{{/type}}{{/move}}
+            {{#move}}{{#type}}
+            <span class="sheet-roll-type">{{type}}{{#cat}} | {{cat}}{{/cat}}</span>
+            {{/type}}{{/move}}
             
             <span class="sheet-roll-value">{{roll}}</span>
             
@@ -49,7 +48,7 @@
             {{/pool}}
             
         </div>
-        {{/roll}}
+        {{/rollGreater() pool 0}}
         
         {{#description}}
         <div class="sheet-roll-row">
@@ -442,7 +441,7 @@
                                 <span title="">Limit</span>
                             </span>
                             <span class="field-labeled">
-                                <input type="number" name="attr_strength_bonus" title="@{strength_bonus}"  value="0"  />
+                                <input type="number" name="attr_strength_bonus" title="@{strength_bonus}"  value="0" />
                                 <span title="">Bonus</span>
                             </span>
                             
@@ -465,7 +464,7 @@
                                 <span title="">Limit</span>
                             </span>
                             <span class="field-labeled">
-                                <input type="number" name="attr_dexterity_bonus" title="@{dexterity_bonus}" min="-5" value="0" max="5" />
+                                <input type="number" name="attr_dexterity_bonus" title="@{dexterity_bonus}"  value="0" />
                                 <span title="">Bonus</span>
                             </span>
                             
@@ -488,7 +487,7 @@
                                 <span title="">Limit</span>
                             </span>
                             <span class="field-labeled">
-                                <input type="number" name="attr_vitality_bonus" title="@{vitality_bonus}" min="-3" value="0" max="3" />
+                                <input type="number" name="attr_vitality_bonus" title="@{vitality_bonus}" value="0" />
                                 <span title="">Bonus</span>
                             </span>
                             
@@ -511,7 +510,7 @@
                                 <span title="">Limit</span>
                             </span>
                             <span class="field-labeled">
-                                <input type="number" name="attr_special_bonus" title="@{special_bonus}" min="-3" value="0" max="3" />
+                                <input type="number" name="attr_special_bonus" title="@{special_bonus}" value="0" />
                                 <span title="">Bonus</span>
                             </span>
                             
@@ -534,7 +533,7 @@
                                 <span title="">Limit</span>
                             </span>
                             <span class="field-labeled">
-                                <input type="number" name="attr_insight_bonus" title="@{insight_bonus}" min="-3" value="0" max="3" />
+                                <input type="number" name="attr_insight_bonus" title="@{insight_bonus}" value="0" />
                                 <span title="">Bonus</span>
                             </span>
                             
@@ -660,7 +659,7 @@
                             </span>
                             <span style="display:inline-block;width:110px">
                                 <button type="roll" name="roll_initiative" 
-                                value="@{whisper} &{template:PMD} {{name= Initiative }} {{character= @{character_name} }} {{roll= [[1d6 + (@{initiative_calc}) &{tracker}]] }}">Initiative</button>
+                                value="@{whisper} &{template:PMD} {{name= Initiative }} {{character= @{character_name} }} {{roll= [[1d6 + (@{initiative_calc}) &{tracker}]] }} {{pool= [[1]]}}">Initiative</button>
                             </span>
                             <span style="display:inline-block;width:120px">
                                 <span class="field-labeled" style="display:inline-block;width:60px">
@@ -713,7 +712,7 @@
                             
                             <span style="display:inline-block;width:110px">
                                <button type="roll" name="roll_evade"
-                            value="@{whisper} &{template:PMD} {{name= Accuracy}} {{character= @{character_name} }} {{pool= [[(@{dexterity_calc}) + @{fight} + @{evasion}]] }} {{successes= [[(@{dexterity_calc} + @{fight} + @{evasion})d6>4s]] }}">Evade</button>
+                            value="@{whisper} &{template:PMD} {{name= Evade}} {{character= @{character_name} }} {{pool= [[(@{dexterity_calc}) + @{fight} + @{evasion}]] }} {{roll= [[(@{dexterity_calc} + @{fight} + @{evasion})d6>4s]] }}">Evade</button>
                             </span>
                             
                             <span style="display:inline-block;width:120px">
@@ -740,7 +739,7 @@
                             
                             <span style="display:inline-block;width:110px">
                                <button type="roll" name="roll_clash"
-                            value="@{whisper} &{template:PMD}{{name=@{character_name}'s Clash}}{{pool=[[(@{clash_attribute})+@{clash}+@{fight}]] }}{{roll=[[(@{clash_attribute}+@{clash}+@{fight})d6>4s]] }}">Clash</button>
+                            value="@{whisper} &{template:PMD}{{character= @{character_name} }}{{name= Clash }}{{pool=[[(@{clash_attribute})+@{clash}+@{fight}]] }}{{roll=[[(@{clash_attribute}+@{clash}+@{fight})d6>4s]] }}">Clash</button>
                             </span>
                             
                             <span style="display:inline-block;width:120px">
@@ -823,7 +822,7 @@
                             </span>
                             
                             <button type="roll" name="roll_generic" 
-                            value="@{whisper} &{template:default}{{name=@{character_name}'s Roll }}{{pool=[[@{move_generic_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_generic_calc} + (?{Modifier|0}) )d6>4s]] }}">Roll</button>
+                            value="@{whisper} &{template:PMD}{{character= @{character_name}}}{{name= Roll }}{{pool=[[@{move_generic_calc} + (?{Modifier|0}) ]] }}{{roll=[[(@{move_generic_calc} + (?{Modifier|0}) )d6>4s]] }}">Roll</button>
                         </div>
                         
                     </div>
@@ -859,7 +858,10 @@
                         </div>
                         
                         <button type="roll" style="display: block; width: auto ; margin: 0 auto;padding: 3px 20px;"
-                        value="@{whisper} &{template:PMD} {{name= Luck Roll }} {{character= @{character_name} }} {{pool= [[1]]}} {{roll= [[ 1d6>6s ]]}}">Luck Dice</button>
+                        value="@{whisper} &{template:PMD} {{name= Luck Dice }} {{character= @{character_name} }} {{pool= [[1]]}} {{roll= [[ 1d6>6s ]]}}">Luck Dice</button>
+                        
+                        <button type="roll" style="display: block; width: auto ; margin: 3px auto;padding: 3px 20px;"
+                        value="@{whisper} &{template:PMD}{{name= Extra Dice }}{{character= @{character_name} }} {{pool= [[ ?{Number of Dice | 1} ]]}} {{roll= [[ ?{Number of Dice | 1}d6>4s ]] }}">Extra Dice</button>
                         
                     </div>
     
@@ -1452,7 +1454,7 @@
                                         <span>Pool</span>
                                     </span>
                                     <button type="roll" name="roll_move_accuracy" 
-                                    value="@{whisper} &{template:default}{{name=@{character_name}'s @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} + (?{Modifier|0}) ]] }}{{successes=[[(@{move_accuracy_calc} + (?{Modifier|0}) )d6>4s]] }}" ></button>
+                                    value="@{whisper} &{template:PMD}{{character= @{character_name} }}{{name= @{move_name} Accuracy }}{{pool=[[@{move_accuracy_calc} + (?{Modifier|0}) ]] }}{{roll=[[(@{move_accuracy_calc} + (?{Modifier|0}) )d6>4s]] }}{{description= @{move_description} }}" ></button>
                                 </div>
                                 
                                 <div style="display:inline-block;margin-right:5px">
@@ -1462,7 +1464,7 @@
                                         <span>Pool</span>
                                     </span>
                                     <button type="roll" name="roll_move_damage" 
-                                    value="@{whisper} &{template:default}{{name=@{character_name}'s @{move_name} Damage }}{{type=@{move_type}}}{{pool=[[@{move_damage_calc} - ?{Defense/Sp.Defense?|0}]] }}{{successes=[[(@{move_damage_calc} - ?{Defense/Sp.Defense?|0})d6>4s]] }}" ></button>
+                                    value="@{whisper} &{template:PMD}{{character= @{character_name} }}{{name= @{move_name} Damage }}{{type=@{move_type}}}{{cat= @{move_category} }}{{pool=[[@{move_damage_calc} - ?{Defense/Sp.Defense?|0}]] }}{{roll=[[(@{move_damage_calc} - ?{Defense/Sp.Defense?|0})d6>4s]] }}" ></button>
                                 </div>
                                 
                                 <div style="display:inline-block;margin-right:5px">
@@ -1477,7 +1479,7 @@
                                         <span>Chance</span>
                                     </span>
                                     <button type="roll" name="roll_move_effect" 
-                                    value="@{whisper} &{template:default}{{name=@{character_name}'s @{move_name} Effect}}{{pool=[[@{move_effect_chance}]] }}{{successes=[[(@{move_effect_chance})d6>6s]] }}" ></button>
+                                    value="@{whisper} &{template:PMD}{{character= @{character_name} }}{{name= @{move_effect} Effect }}{{pool=[[@{move_effect_chance}]] }}{{roll=[[(@{move_effect_chance})d6>6s]] }}{{description= @{move_description} }}" ></button>
                                     
         
                                 </div>
@@ -1506,6 +1508,9 @@
     <div class='sheet-tab-settings'>
         <div>
             <label><input type='checkbox' name='attr_creature_mode' value='0' /> Trainer sheet</label>
+        </div>
+        <div>
+            <label><input type='checkbox' name='attr_creature_mode' value='1' /> Pokemon sheet</label>
         </div>
         <div>
             <label><input type='checkbox' name='attr_creature_mode' value='1' /> Pokemon sheet</label>
