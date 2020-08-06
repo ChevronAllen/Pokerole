@@ -3,6 +3,7 @@ sheet_version
 whisper
 creature_mode
 PMD_mode
+sheet-tab
 
 character_name
 level
@@ -20,6 +21,7 @@ age
 money
 size
 weight
+
 ability
 ability_chance
 ability_dice
@@ -112,6 +114,7 @@ clash_calc
 generic_attribute
 generic_skill
 generic_specialty
+move_generic_calc
 
 defense_mod
 defense_calc
